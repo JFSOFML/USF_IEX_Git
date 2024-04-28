@@ -55,3 +55,20 @@ fig = ff.create_annotated_heatmap(
 fig.update_layout(xaxis=dict(tickangle=45))
 st.plotly_chart(fig)
 st.divider()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+st.divider()
+st.subheader("KMeans++ Elbow Plot")
+st.image("Pictures\K_means++.png")

@@ -79,6 +79,9 @@ forest.fit(X_train,y_train)
 y_pred = forest.predict(X_test)
 R2 = metrics.r2_score(y_test, y_pred)
 
+### Insert Code here for New Addtions
+
+
 with open('Scaler.pkl', 'wb') as f:
     pickle.dump(sc, f)
 with open('forest.pkl', 'wb') as f:

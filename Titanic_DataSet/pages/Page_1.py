@@ -75,15 +75,15 @@ st.header('Feature Importance Analysis')
 
 # Print the feature ranking
 st.write("Feature ranking:")
-for f in range(train_features_norm.shape[1]):  # using train_features_norm
-    st.write("%2d) %-*s %f" % (f + 1, 30, feat_labels[indices[f]], importances[indices[f]]))
+for f in range(app.train_features_norm.shape[1]):  # using train_features_norm
+    st.write("%2d) %-*s %f" % (f + 1, 30, app.feat_labels[app.indices[f]], app.importances[app.indices[f]]))
 
 # Plot the feature importances of the forest
 plt.figure(figsize=(10, 6))  # Optionally adjust the figure size
 plt.title('Feature Importance')
-plt.bar(range(train_features_norm.shape[1]), importances[indices], color='skyblue', align='center')
-plt.xticks(range(train_features_norm.shape[1]), [feat_labels[i] for i in indices], rotation=90)
-plt.xlim([-1, train_features_norm.shape[1]])
+plt.bar(range(app.train_features_norm.shape[1]), app.importances[app.indices], color='skyblue', align='center')
+plt.xticks(range(app.train_features_norm.shape[1]), [app.feat_labels[i] for i in app.indices], rotation=90)
+plt.xlim([-1, app.train_features_norm.shape[1]])
 plt.tight_layout()
 
 # Display the plot in your Streamlit app
