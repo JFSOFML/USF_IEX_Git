@@ -56,17 +56,13 @@ fig.update_layout(xaxis=dict(tickangle=45))
 st.plotly_chart(fig)
 st.divider()
 
-
-
-
-
-
-
-
-
-
-
-
+st.subheader("Learning Curve")
+st.image("Pictures\Learning_Curve_Housing.png")
+st.divider()
+st.subheader("Validation Curve")
+st.image("Pictures\Housing_Validation_Curve.png")
+st.write("R2 Score = 0.8412 ± 0.0607")
+st.divider()
 
 
 st.divider()
