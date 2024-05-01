@@ -7,18 +7,21 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 import plotly.express as px
+from sklearn.model_selection import learning_curve
+import numpy as np
+
 
 with open("SVCModel.pkl", "rb") as f: 
     linear_SVC_model = pickle.load(f)
     
 
-st.header("Visualization")
+st.header("Visualizations")
 
-app.train
+#app.train
 
-app.test
+#app.test
 
-app.gender_submission
+#app.gender_submission
 
 
 
@@ -32,8 +35,10 @@ selected_variables = selected_variables.dropna()
 # Calculate the correlation matrix
 corr_matrix = selected_variables.corr()
 
+st.divider()
 # Create the heatmap
 plt.figure(figsize=(8,6))
+plt.title("Heat Map")
 sns.heatmap(corr_matrix, annot=True, cmap='coolwarm')# annot=true means insert the values visually withing the squares. 
 st.pyplot(plt.gcf())
 # The below shows the correlation highest positive correlation
@@ -70,21 +75,21 @@ fig.update_layout(
 # Displays in my Streamlit app
 st.plotly_chart(fig)
 
-# Display a header in your Streamlit app
-st.header('Feature Importance Analysis')
 
-# Print the feature ranking
-st.write("Feature ranking:")
-for f in range(app.train_features_norm.shape[1]):  # using train_features_norm
-    st.write("%2d) %-*s %f" % (f + 1, 30, app.feat_labels[app.indices[f]], app.importances[app.indices[f]]))
+st.divider()
 
-# Plot the feature importances of the forest
-plt.figure(figsize=(10, 6))  # Optionally adjust the figure size
-plt.title('Feature Importance')
-plt.bar(range(app.train_features_norm.shape[1]), app.importances[app.indices], color='skyblue', align='center')
-plt.xticks(range(app.train_features_norm.shape[1]), [app.feat_labels[i] for i in app.indices], rotation=90)
-plt.xlim([-1, app.train_features_norm.shape[1]])
-plt.tight_layout()
+st.subheader("Learning Curve")
+st.image('Pictures\Titanic_LearningCurve.png')
+st.caption("Very High Bias, Accuracy Score: 0.9689 ± 0.0349")
 
-# Display the plot in your Streamlit app
-st.pyplot(plt)
+st.divider()
+
+st.subheader("Validation Curve")
+st.image('Pictures\Titanic_Validation_Curve.png')
+st.caption("High Bias, Low Variance ")
+
+st.divider()
+
+st.subheader("KMeans++ Plot")
+st.image('Pictures\Titanic_KMeans.png')
+st.caption("Cluster Decrease = Distortion increase")
