@@ -8,7 +8,7 @@ st.header("Predictions")
 
 with open('Scaler.pkl', 'rb') as f:
     sc = pickle.load(f)
-with open('my_model.pkl', 'rb') as f:
+with open('forest.pkl', 'rb') as f:
     model = pickle.load(f)
 
     # columns = ['Overall Qual', 'Overall Cond', 'Gr Liv Area',
