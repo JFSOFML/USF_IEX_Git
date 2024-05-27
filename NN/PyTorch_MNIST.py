@@ -1,11 +1,11 @@
 import streamlit as st
 
-# Define the Streamlit app
+# Defined the Streamlit app
 st.title("MNIST Classification Project")
-
-# Create sidebar for navigation
+st.divider()
+# Created sidebar for navigation 
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Overview", "Visualizations"])
+page = st.sidebar.radio("Go to", ["Overview", "Visualizations"]) # just like in C# .net framework
 
 if page == "Overview":
     st.header("Overview")
@@ -72,10 +72,12 @@ if page == "Overview":
     Epoch 9: Loss: 0.0005
     """)
 
+
     st.subheader("7. Evaluating the Model")
     st.write("""
     After training, the model is evaluated on the test set. The average loss and accuracy are calculated and displayed.
     """)
+st.success("Model evaluation complete! Check out the visualizations page for more details.")
 
 if page == "Visualizations":
     st.header("Visualizations")
@@ -86,9 +88,9 @@ if page == "Visualizations":
     - **Training Accuracy**: This chart shows how the accuracy improves over the epochs during the training process.
     """)
 
-    # Display the images
+    # Display my visual outputs
     st.image("C:/Users/julio/OneDrive/Desktop/IEX/USF_IEX_Git/NN/Pictures/MNIST_img.png", caption='Sample MNIST Image', use_column_width=True)
     st.image("C:/Users/julio/OneDrive/Desktop/IEX/USF_IEX_Git/NN/Pictures/Ptorch_LC_Loss.png", caption='Learning Curve - Loss', use_column_width=True)
     st.image("C:/Users/julio/OneDrive/Desktop/IEX/USF_IEX_Git/NN/Pictures/Ptorch_LC_Accuracy.png", caption='Learning Curve - Accuracy', use_column_width=True)
-
+st.balloons()
 
