@@ -5,10 +5,15 @@ st.title("MNIST Classification Project")
 
 # Create sidebar for navigation
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Overview", "Visualizations"])
+page = st.sidebar.radio("Go to", ["Overview", "Pytorch","Tensorflow"])
 
 if page == "Overview":
     st.header("Overview")
+    st.write("""
+    This is Neural Network overview using Pytorch and Tensorflow:
+    """)
+if page == "Pytorch":
+    st.header("Pytorch")
     st.write("""
     This project demonstrates a basic neural network for classifying handwritten digits from the MNIST dataset.
     The process includes several key steps:
@@ -76,19 +81,22 @@ if page == "Overview":
     st.write("""
     After training, the model is evaluated on the test set. The average loss and accuracy are calculated and displayed.
     """)
+    # Display the images
+    st.image("Pictures/MNIST_img.png", caption='Sample MNIST Image', use_column_width=True)
+    st.image("Pictures/Ptorch_LC_Loss.png", caption='Learning Curve - Loss', use_column_width=True)
+    st.image("Pictures/Ptorch_LC_Accuracy.png", caption='Learning Curve - Accuracy', use_column_width=True)
 
-if page == "Visualizations":
-    st.header("Visualizations")
+
+if page == "Tensorflow":
+    st.header("Tensorflow")
     st.write("""
-    The following visualizations show the learning curves of the model during training:
-    
-    - **Training Loss**: This chart shows how the loss decreases over the epochs during the training process.
-    - **Training Accuracy**: This chart shows how the accuracy improves over the epochs during the training process.
+    This project demonstrates a basic neural network for classifying handwritten digits from the MNIST dataset.
+    The process includes several key steps:
     """)
 
     # Display the images
-    st.image("C:/Users/julio/OneDrive/Desktop/IEX/USF_IEX_Git/NN/Pictures/MNIST_img.png", caption='Sample MNIST Image', use_column_width=True)
-    st.image("C:/Users/julio/OneDrive/Desktop/IEX/USF_IEX_Git/NN/Pictures/Ptorch_LC_Loss.png", caption='Learning Curve - Loss', use_column_width=True)
-    st.image("C:/Users/julio/OneDrive/Desktop/IEX/USF_IEX_Git/NN/Pictures/Ptorch_LC_Accuracy.png", caption='Learning Curve - Accuracy', use_column_width=True)
+    st.image("Pictures/MNIST_img.png", caption='Sample MNIST Image', use_column_width=True)
+    st.image("Pictures/Ptorch_LC_Loss.png", caption='Learning Curve - Loss', use_column_width=True)
+    st.image("Pictures/Ptorch_LC_Accuracy.png", caption='Learning Curve - Accuracy', use_column_width=True)
 
 
