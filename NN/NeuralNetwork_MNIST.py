@@ -20,6 +20,8 @@ if page == "Overview":
     By working with MNIST, beginners can build a solid foundation in machine learning, understand the principles of neural networks,
     and gain hands-on experience with two of the most popular deep learning libraries.
     """)
+
+    st.write("Accuracy")
     st.divider()
     st.subheader("History of the MNIST Dataset")
     st.write("""
