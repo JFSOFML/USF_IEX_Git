@@ -5,7 +5,7 @@ import streamlit as st
 
 # Creating sidebar for navigation
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Overview", "Pytorch","Tensorflow"])
+page = st.sidebar.radio("Go to", ["Overview", "Pytorch","Tensorflow","Tensorboard"])
 
 if page == "Overview":
     st.title("MNIST Classification Project")
@@ -161,3 +161,13 @@ if page == "Tensorflow":
     st.image("Pictures/TensorFlow2.png", caption='Training Loss and Accuracy', use_column_width=True)
     st.balloons()
 
+if page == "Tensorboard":
+    st.header("Tensorboard Visualizations")
+    st.write("This section displays three TensorBoard visualizations from the MNIST classification project.")
+
+   
+    st.image("Pictures/TensBoard_Pytorch.png", caption='TensorBoard - Pytorch')
+    st.image("Pictures/TensBoard_VCurve.png", caption='TensorBoard - Validation Curve')
+    st.image("Pictures/TensorBoard_1.png", caption='TensorBoard - Overview')
+
+   
