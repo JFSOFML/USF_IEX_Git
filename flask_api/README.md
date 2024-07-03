@@ -1,5 +1,5 @@
 ### Titanic ML Model Prediction API
-This project demonstrates how to use a trained Machine Learning model with the Titanic dataset, save it as a pickle file, and create a Flask application that uses this model to make predictions. The application provides an endpoint to make predictions by sending JSON data via Python or Postman. The process includes importing necessary libraries, loading pretrained models, defining routes for predictions, running the Flask app, and handling POST requests to obtain predictions. Using nested lists in POST requests ensures consistent data format, scalability, and accurate data processing for the model.
+This project demonstrates how to use a trained Machine Learning model with the Titanic dataset, save it as a pickle file, and create a Flask application that uses this model to make predictions. The application provides an endpoint to make predictions by sending JSON data via Postman. The process includes importing necessary libraries, loading pretrained models, defining routes for predictions, running the Flask app, and handling POST requests to obtain predictions. Using nested lists in POST requests ensures consistent data format, scalability, and accurate data processing for the model.
 ## Required imports
 ![alt text](pictures/Imports.png)
 ### Explanations 
@@ -45,7 +45,32 @@ To start the Flask application, run the following command in your terminal:
 
 - Then send Curl Request. 
 ![alt text](pictures/CMD_1.png)
+### Understanding the `curl` Command
 
+- **`curl`**:
+  - This is the command itself. Think of it as your way to talk to the server.
+
+- **`-X POST`**:
+  - This tells `curl` to use the POST method. POST is like sending a letter with information to the server.
+
+- **`http://127.0.0.1:5000/predict`**:
+  - This is the address of our Flask application. It’s like the server’s home address.
+  - `127.0.0.1` means your own computer (localhost).
+  - `:5000` is the port where Flask is listening.
+  - `/predict` is the specific route that will handle our request.
+
+- **`-H "Content-Type: application/json"`**:
+  - This sets a header to tell the server what kind of data we’re sending. Here, it's JSON, which is a common data format.
+
+- **`-d "{\"data\": [[25, 1, 0, 1, 0]]}"`**:
+  - This is the data we are sending to the server. It includes:
+    - `-d`: Stands for data.
+    - `"{\"data\": [[25, 1, 0, 1, 0]]}"`: This is the actual data in JSON format. Note the escape characters `\"` for the double quotes inside the JSON string.
+
+### What Happens Next?
+
+- The `curl` command sends the data to the `/predict` endpoint of our Flask application.
+- Flask processes the data, makes a prediction using the model, and sends the prediction back as a response.
 
 
 ## Post Request to /predict
@@ -61,7 +86,7 @@ To start the Flask application, run the following command in your terminal:
 **[[25, 1, 0, 1, 0]]**: The value, which is an array containing arrays of input values.
 - **Click** the "Send" button to send the request.
 
-### Side note: Why Nested Lists in POST Request
+### In case you're wondering: Why Nested Lists in POST Request?
 
 - **Consistent Data Format**: Machine learning models expect input data in a 2D array format, even for a single sample. This format ensures the model receives data correctly.
 - **Handling Multiple Samples**: Allows the endpoint to process multiple samples in one request, enhancing scalability.
@@ -70,5 +95,5 @@ To start the Flask application, run the following command in your terminal:
 Example:
 ```json
 {
-  "data": [[25, 1, 0, 1, 0]]
+  "data": [[25, 1, 0, 1, 0], [30, 1, 0, 1, 0]]
 }
