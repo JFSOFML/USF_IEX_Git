@@ -1,5 +1,10 @@
-from flask import Flask, jsonify, request 
+# Flask: Lets us create a web app
+from flask import Flask, jsonify, request
+
+# Pickle: Lets us save and load our trained model
 import pickle
+
+# NumPy: Helps with number crunching and handling arrays
 import numpy as np
 
 app = Flask (__name__)
@@ -17,11 +22,11 @@ def predict():
     # Get the JSON data from the post request
     data = request.get_json()# saves the JSON data as the variable "data"
 
-    # extracting binary data from the JSON Which is stored in the variable name "data" 
+    # extracting binary data from the JSON Which is stored in the variable name "data" starting at the first element. 
     input_data = data["data"][0] # creating the variable data and Extracting the Data from the variable Name "data"
 
 
-    # Reshape the data to 2D
+    # Convert to Numpy & Reshape the data to 2D for the model
     input_data = np.array(input_data).reshape(1, -1)
 
     # Apply the scaler
@@ -29,7 +34,7 @@ def predict():
 
     # Make prediction using the loaded model
     prediction = model.predict(scaled_data)
-    
+
     # Return the prediction as a JSON response
     return jsonify({"prediction": prediction.tolist()})
     
