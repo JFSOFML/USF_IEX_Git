@@ -16,7 +16,10 @@ This project demonstrates how to use a trained Machine Learning model with the T
 
 ## Loading Pretrained Model & Scaler
 ![alt text](pictures/Pickle_open.png)
-These lines loads and opens the pre-trained machine learning model and scaler from pickle files.
+
+- These lines loads and opens the pre-trained machine learning model and scaler from pickle files.
+
+
 ## Defining Routes / Web Endpoints
 ![alt text](pictures/Def_routes.png)
 **@app.route("/")**: This decorator creates an endpoint for the root URL ("/").
