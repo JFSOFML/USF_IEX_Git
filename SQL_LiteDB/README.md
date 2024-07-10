@@ -54,7 +54,7 @@ This script helps you import data from a CSV (Comma Separated Values) file into 
 
 **How to Use:**
 
-1. Install the required libraries (`csv`, `sqlite3`, `pandas`, and `os`) using `pip install`.
+1. Install the required libraries (`csv`,`pandas`, and `os`) using `pip install`.
 2. Update the script with your specific file paths for the CSV data and the desired database file.
 3. Run the script using a Python interpreter.
 
