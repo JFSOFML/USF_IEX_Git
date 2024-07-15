@@ -1,6 +1,6 @@
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
+import pandas as pd # Data manipulation and analysis
+import seaborn as sns # Data visualization
+import matplotlib.pyplot as plt # Plotting library
 
 # Load dataset
 df = pd.read_csv("titanic_data.csv")

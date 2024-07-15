@@ -1,0 +1,31 @@
+
+services:
+  database:
+    build: 
+      context: .
+      dockerfile: ./data/DockerFile # Location of directory files
+    container_name: figs 
+    # might have to add volumes if I have bugs. 
+    
+
+  flask: 
+    build:
+      context: ./flask
+      dockerfile: DockerFile
+    container_name: fl_container
+    ports:
+      - "5000:5000"
+    depends_on: 
+      - database
+
+  streamlit: 
+      build:
+        context: ./streamlit
+        dockerfile: DockerFile
+      container_name: figs1 # name to reference if needed for other projects
+      ports:
+        - "8501:8501"
+      depends_on: 
+        - flask
+
+    

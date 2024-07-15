@@ -1,0 +1,12 @@
+# 5 Mb image
+FROM alpine:latest
+
+RUN apk add --no-cache sqlite
+
+WORKDIR /app
+
+COPY ./titanic.db /app/titanic.db
+
+CMD ["tail", "-f", "/dev/null"] 
+## Research above line
+
