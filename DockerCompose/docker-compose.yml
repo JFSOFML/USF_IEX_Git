@@ -1,12 +1,13 @@
+version: '3.8'
 
 services:
   database:
     build: 
       context: .
-      dockerfile: ./data/DockerFile # Location of directory files
+      dockerfile: ./data/DockerFile 
     container_name: figs 
-    # might have to add volumes if I have bugs. 
-    
+    volumes:  
+      - ./titanic.db:/app/titanic.db
 
   flask: 
     build:
@@ -17,15 +18,18 @@ services:
       - "5000:5000"
     depends_on: 
       - database
+    volumes:
+      - ./flask:/app
+      - ./titanic.db:/app/titanic.db
 
   streamlit: 
-      build:
-        context: ./streamlit
-        dockerfile: DockerFile
-      container_name: figs1 # name to reference if needed for other projects
-      ports:
-        - "8501:8501"
-      depends_on: 
-        - flask
-
-    
+    build:
+      context: ./streamlit
+      dockerfile: DockerFile
+    container_name: figs1
+    ports:
+      - "8501:8501"
+    depends_on: 
+      - flask
+    volumes:
+      - ./streamlit:/app

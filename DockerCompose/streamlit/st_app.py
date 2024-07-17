@@ -7,7 +7,7 @@ st.title("Docker Compose Pipeline Demo")
 Query = st.text_area(label="Input Text Here") # revisit : Barebones
 
 if st.button("Results"):
-    response = requests.post("http://fl_container:5000/Qry", json={"Qry":Query}) # Check names if bugs 
+    response = requests.post("http://fl_container:5000/query", json={"query":Query}) # Check names if bugs 
 
     if response.status_code == 200:
         try: 
