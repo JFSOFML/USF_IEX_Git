@@ -6,7 +6,8 @@ This project demonstrates a Docker Compose pipeline that integrates a Flask back
 - Docker installed on your machine
 
 #### File Directory Setup:
-project-root/
+
+`project-root/
 │
 ├── data/
 │ ├── DockerFile
@@ -22,11 +23,12 @@ project-root/
 │ ├── requirements.txt
 │ └── DockerFile
 │
-└── docker-compose.yml
+└── docker-compose.yml`
+
 ## Step 2: Setup the SQLite Database Service
 
 #### Docker File: 
-![SQLite Database DockerFile](Pictures\Docker_Data1.png)
+![SQLite Database DockerFile](Pictures/Docker_Data1.png)
 
 
 ## Step 3: Setup the Flask Backend Service
@@ -36,10 +38,10 @@ project-root/
 - requests
 
 #### Docker File:
-![Flask Backend DockerFile](Pictures\Flask_Docker2.png)
+![Flask Backend DockerFile](Pictures/Flask_Docker2.png)
 
 #### .py File:
-![Flask Backend app.py](Pictures\Flask_AppPyFile2.png)
+![Flask Backend app.py](Pictures/Flask_AppPyFile2.png)
 
 ## Step 4: Setup the Streamlit Frontend Service
 #### requirments.txt:
@@ -49,14 +51,14 @@ project-root/
 - requests
 
 #### Docker File: 
-![Streamlit Frontend DockerFile](Pictures\StreamlitDocker.png)
+![Streamlit Frontend DockerFile](Pictures/StreamlitDocker.png)
 #### py File: 
-![Docker Compose File](Pictures\streamlit_py_imports.png)
-![Docker Compose File](Pictures\streamlit_py2.png)
+![Docker Compose File](Pictures/streamlit_py_imports.png)
+![Docker Compose File](Pictures/streamlit_py2.png)
 
 ## Step 5: Create the Docker Compose File
 
-![Docker Compose File](Pictures\Yml_File.png)
+![Docker Compose File](Pictures/Yml_File.png)
 
 ## Running the Application
 
