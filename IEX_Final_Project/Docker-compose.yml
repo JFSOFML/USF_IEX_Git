@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  database:
+    build:
+      context: ./Database
+      dockerfile: Dockerfile
+    container_name: sqlite_db
+    volumes:
+      - ./Database/DSRA_projects.db:/app/DSRA_projects.db
+
+  flask:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    container_name: fl_container
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./Backend:/app
+      - ./Database/DSRA_projects.db:/app/DSRA_projects.db
+
+  streamlit:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    container_name: streamlit_app
+    ports:
+      - "8501:8501"
+    depends_on:
+      - flask
+    volumes:
+      - ./Frontend:/app
