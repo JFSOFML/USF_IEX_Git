@@ -43,8 +43,36 @@ project = st.sidebar.selectbox("Select a project", ["Titanic Survival Prediction
 if project == "Ames Housing Analysis":
     st.header("Ames Housing Data Analysis :house:")
     
+    # Project Overview
+    with st.expander("Project Overview"):
+        st.write("""
+        This project involves predicting housing prices in Ames, Iowa, using various regression techniques. The goal is to create a model that accurately estimates the sale price of homes based on several features. Here are the main steps and processes involved:
+
+        ### Data Preprocessing
+        - **Loading Data:** The dataset was imported, focusing on specific features such as 'Overall Qual', 'Overall Cond', 'Gr Liv Area', 'Central Air', 'Total Bsmt SF', and 'SalePrice'.
+        - **Feature Engineering:**
+            - Converted categorical data into numerical format, such as mapping 'Central Air' to binary values.
+            - Dropped any rows with missing values to maintain data integrity.
+        
+        ### Model Training and Evaluation
+        - **Model Selection:** Chose `RandomForestRegressor` for its robustness and ability to handle various feature interactions.
+        - **Pipeline Setup:** Created a pipeline integrating data scaling (`StandardScaler`) and the regression model to streamline the training process.
+        - **Hyperparameter Tuning:** Utilized `RandomizedSearchCV` to optimize the hyperparameters of the Random Forest model, such as the number of estimators and maximum depth.
+        - **Model Evaluation:** 
+            - Evaluated the model using metrics like R^2, Mean Squared Error (MSE), and Mean Absolute Error (MAE) to assess performance.
+            - Achieved a strong R^2 score, indicating the model's ability to explain the variance in housing prices.
+
+        ### Learning and Validation Curves
+        - **Learning Curve:** Plotted learning curves to visualize the training and cross-validation scores, helping to identify underfitting or overfitting.
+        - **Validation Curve:** Analyzed how the model's performance varies with different hyperparameter values, specifically the number of estimators in the Random Forest.
+
+        ### Results and Insights
+        - **Model Performance:** The final model showed a high level of accuracy in predicting house prices, with R^2 scores indicating good model fit.
+        """)
+    st.divider()
+
     # Visualizations
-    st.subheader("Visualizations")
+    st.subheader("Visualizations & Tools")
     st.divider()
 
     column_to_filter_by = st.selectbox("Choose a column to filter by", app.df.columns)
@@ -77,16 +105,35 @@ if project == "Ames Housing Analysis":
     # Learning and Validation Curves
     st.subheader("Learning Curve")
     st.image("Pictures/Learning_Curve_Housing.png")
-    st.divider()
-
-    st.subheader("Validation Curve")
-    st.image("Pictures/Housing_Validation_Curve.png")
-    st.write("R2 Score = 0.8412 ± 0.0607")
+    st.write("""
+    **What It Shows**: This graph shows how the model's performance changes as the number of training examples increases.
+    - **Training Score (Green Line)**: How well the model fits the training data.
+    - **Cross-Validation Score (Red Line)**: How well the model performs on unseen data.
+    - **Interpretation**: The model performs well on the training data, but there is a gap between the training and cross-validation scores, indicating some overfitting. The cross-validation score improves with more training data but starts to plateau, suggesting that adding more data might not significantly improve performance.
+    """)
+    
     st.divider()
 
     st.subheader("KMeans++ Elbow Plot")
     st.image("Pictures/K_means++.png")
+    st.write("""
+    **What It Shows**: This graph helps determine the optimal number of clusters for K-Means clustering.
+    - **Distortion**: The sum of squared distances from each point to its assigned cluster center.
+    - **Interpretation**: The "elbow" point, where the distortion decreases more slowly, suggests the optimal number of clusters. Here, it appears around 3 or 4 clusters.
+    """)
     st.divider()
+
+    # MAE and R^2 Explanation
+    st.subheader("Model Performance Metrics")
+    st.write("""
+    
+    **MAE Explanation**:
+    - on average, our predicted house prices are off by $21,000 from the actual prices.
+
+    **R^2 Score**:
+    - **Explanation**: An R^2 score of 0.86 means that 86% of the variability in house prices can be explained by the model. This is a strong indication that the model is performing well.
+    """)
+
 
     # Predictions
     st.header("Predictions")
@@ -99,8 +146,8 @@ if project == "Ames Housing Analysis":
     overall_qual = st.select_slider('Overall Quality (1-10):', options=range(1, 11), value=5)
     overall_cond = st.select_slider('Overall Condition (1-10):', options=range(1, 11), value=5)
     gr_liv_area = st.slider('Above Grade Living Area (sq. ft):', 0, 5000, 1500)
-    Central_Air = st.selectbox('Central Air',["Yes","No"])
-    Central_Air_Binary = {'Yes':1, 'No':0}
+    Central_Air = st.selectbox('Central Air', ["Yes", "No"])
+    Central_Air_Binary = {'Yes': 1, 'No': 0}
     total_bsmt_sf = st.slider('Total Basement SF (sq. ft.):', 0, 3000, 1500)
 
     Input = pd.DataFrame({
@@ -143,6 +190,9 @@ if project == "Ames Housing Analysis":
     - **Voting:** 0.5250
     """)
 
+    st.divider()
+
+
 # Titanic Survival Prediction Section
 if project == "Titanic Survival Prediction":
     st.header("Titanic Survival Prediction :ship:")
@@ -163,6 +213,10 @@ if project == "Titanic Survival Prediction":
         ### Exploratory Data Analysis (EDA)
         - **Visualization:** Used various visualization techniques to explore data distributions and correlations, helping to understand the underlying patterns and relationships in the data.
 
+        """)
+        st.image("Pictures/Correlation_Matrix_Titanic.png", caption='Correlation Matrix', use_column_width=True)
+        
+        st.write("""
         ### Model Training
         - **Feature Selection:** Selected features such as 'Age', 'Sex_binary', 'FirstClass', 'SecondClass', 'ThirdClass', 'SibSp', 'Parch', and 'Fare' for model training.
         - **Data Normalization:** Applied `StandardScaler` to normalize the features, ensuring that each feature contributed equally to the model.
@@ -171,13 +225,15 @@ if project == "Titanic Survival Prediction":
 
         ### Model Evaluation
         - **Prediction:** Used the trained model to make predictions on the test data.
-        - **Accuracy Assessment:** Evaluated the model's performance using accuracy scores, achieving notable accuracy with the `LinearSVC` model.
+        - **Accuracy Assessment:** Evaluated the model's performance using accuracy scores.
 
         ### Results
-        - **Model Accuracy:** The `LinearSVC` model achieved an accuracy score of approximately 98.6%, indicating a strong predictive performance.
-        - **Feature Importance:** While not detailed here, further analysis can include identifying which features most significantly impacted survival predictions.
-
-        This project demonstrates the application of data preprocessing, feature engineering, and machine learning techniques to solve a real-world classification problem.
+        - **Model Accuracy:**
+          - Logistic Regression Accuracy: 85%
+          - Decision Tree Accuracy: 95.7%
+          - Random Forest Accuracy: 93.1%
+          - **SVC Accuracy (Standard Scaler): 98.6%**
+        
         """)
 
     # Define mappings for user input
@@ -203,7 +259,7 @@ if project == "Titanic Survival Prediction":
         'ThirdClass': class_map[ThirdClass]
     })
 
-    loaded_pipeline = pickle.load(open('SVCModel_pipeline.pkl','rb'))
+    loaded_pipeline = pickle.load(open('SVCModel_pipeline.pkl', 'rb'))
     # Predict 
     if st.button("Predict"):
         prediction = loaded_pipeline.predict(user_input)[0]
@@ -215,80 +271,91 @@ if project == "Titanic Survival Prediction":
 
     st.divider()
 
+    st.header("Ensemble Learning on Titanic Dataset")
 
-    st.header("Ensemble Learning")
     with st.expander("Detailed Explanation of Ensemble Learning Techniques"):
+        st.subheader("Step 1: Imports")
+        st.image("Pictures/Ensemble1.png")
         st.write("""
-        ### Bagging: 
-        Bagging reduces variance by training multiple instances of a model on different subsets of the data and averaging their predictions.
-        This method helps to improve the stability and accuracy of machine learning algorithms.
-        In this project, I used Bagging with 100 estimators to enhance the model's robustness.
-        
-        ### Boosting: 
-        Boosting is an iterative technique that adjusts the weight of an observation based on the last classification.
-        It combines the performance of multiple weak learners to form a strong learner, improving model accuracy by focusing on the hardest to classify examples.
-        I applied Gradient Boosting with 100 estimators and a learning rate of 1.0 to emphasize difficult cases.
-        
-        ### Stacking: 
-        Stacking involves training multiple models and using another model to combine their outputs.
-        This meta-model is trained on the predictions of base models to improve generalization and model performance.
-        For this project, I used Logistic Regression and SVC as base models, with a RandomForestClassifier as the meta-model.
-        
-        ### Voting: 
-        Voting is an ensemble method where multiple models vote on the output, and the most common prediction is selected.
-        It can be 'hard' (majority voting) or 'soft' (averaging probabilities) and is used to increase prediction robustness.
-        I implemented Voting with Logistic Regression, RandomForestClassifier, and SVC, using soft voting for probability averaging.
+        **Why?**: We import necessary libraries and functions to handle data, preprocess it, and build and evaluate machine learning models.
         """)
 
-    st.title("Ensemble Learning on Titanic Dataset")
+        st.subheader("Step 2: Load Data")
+        st.image("Pictures/Ensemble2.png")
+        st.write("""
+        **Why?**: Load the Titanic dataset from CSV files into pandas DataFrames for processing and analysis.
+        """)
+
+        st.subheader("Step 3: Fill Missing Values and Convert Categorical Data")
+        st.image("Pictures/Ensemble3.png")
+        st.write("""
+        **Why?**: Fill missing values in 'Age' and 'Fare' with the mean values to ensure no gaps in the data. Convert the 'Sex' column to a binary format (0 for male, 1 for female) to use it in machine learning models.
+        """)
+
+        st.subheader("Step 4: Assign Features and Labels")
+        st.image("Pictures/Ensemble4.png")
+        st.write("""
+        **Why?**: Select relevant features for training the models and set up the labels (target variable) for prediction. This separates the input variables (features) from the output variable (label).
+        """)
+
+        st.subheader("Step 5: Standardize Features")
+        st.image("Pictures/Ensemble5.png")
+        st.write("""
+        **Why?**: Standardize the features to ensure they all have the same scale. This helps many machine learning algorithms perform better.
+        """)
+
+        st.subheader("Step 6: Define the Models")
+        st.image("Pictures/Ensemble6.png")
+        st.write("""
+        **Why?**: Define multiple ensemble models:
+        - **Bagging**: Combines multiple decision trees to reduce overfitting.
+        - **Boosting**: Combines weak learners (shallow trees) to create a strong learner.
+        - **Stacking**: Uses multiple models and combines their outputs with a final estimator.
+        - **Voting**: Combines predictions from different models and takes a majority vote.
+        """)
+
+        st.subheader("Step 7: Train and Evaluate Each Model")
+        st.image("Pictures/Ensemble7.png")
+        st.write("""
+        **Why?**: Train each model on the training data and evaluate their performance on the test data. Print the accuracy to compare how well each model predicts survival.
+        """)
+
+    st.subheader("Ensemble Results:")
     st.write("""
-    Bagging Model Accuracy: 0.8349
+    Bagging Model Accuracy: 83.5%
             
-    Boosting Model Accuracy: 0.9211
+    Boosting Model Accuracy: 92.1%
             
-    Stacking Model Accuracy: 0.8469
+    Stacking Model Accuracy: 84.7%
             
-    Voting Model Accuracy: 0.9354
+    Voting Model Accuracy: 93.5%
     """)
+    
+
 
 # MNIST Digit Classification Section
 if project == "MNIST Digit Classification":
-    st.header("MNIST Digit Classification")
-    st.write("This section will showcase the digit classification using the MNIST dataset.")
     st.divider()
-
+    
     # Sidebar for MNIST navigation
     st.sidebar.title("MNIST Navigation")
     mnist_page = st.sidebar.radio("Go to", ["Overview", "Pytorch","Tensorflow"])
+   
 
     if mnist_page == "Overview":
         st.title("MNIST Classification Project")
         st.write("Author: Julio Figueroa")
+        st.image("Pictures/MNIST_1.png")
         st.divider()
-        st.subheader("Neural Network Implementation with PyTorch and TensorFlow on the MNIST Dataset")
-        
-        st.write("""
-        The MNIST dataset remains a cornerstone in the field of machine learning and computer vision education. 
-        Its simplicity, combined with the wealth of available resources and community support,
-        makes it an ideal starting point for anyone interested in learning about neural networks and deep learning frameworks such as PyTorch and TensorFlow.
-        By working with MNIST, beginners can build a solid foundation in machine learning, understand the principles of neural networks,
-        and gain hands-on experience with two of the most popular deep learning libraries.
-        """)
-
-        st.divider()
+       
         st.subheader("History of the MNIST Dataset")
         st.write("""
         The MNIST (Modified National Institute of Standards and Technology) dataset is a large collection of handwritten digits that is commonly used for training various image processing systems. It was created by Yann LeCun, Corinna Cortes, and Christopher Burges. The dataset is a subset of a larger set available from NIST, and it was reprocessed to create the MNIST collection.
-
-        Origin: The dataset was created by combining two of NIST's databases: Special Database 1 and Special Database 3.
-
-        These databases contain binary images of handwritten digits.
-
-        Release: The MNIST dataset was released in the 1990s and quickly became a benchmark for evaluating machine learning models and algorithms.
         """)
+
         st.divider()
         st.subheader("Conclusion")
-        st.write("""This project provides a comprehensive overview of Neural Networks using both PyTorch and TensorFlow on the MNIST dataset.
+        st.write("""This project provides the steps of setting up a CNN using both PyTorch and TensorFlow on the MNIST dataset.
         It showcases the key steps involved in building, training, and evaluating neural networks with these two powerful frameworks,
         offering a hands-on approach to understanding the fundamentals of deep learning.""")
 
@@ -316,7 +383,7 @@ if project == "MNIST Digit Classification":
 
         st.subheader("4. Initializing the Model")
         st.write("""
-        A neural network model is defined with two fully connected layers. The first layer has 512 neurons with ReLU activation, and the second layer has 10 neurons for each digit class (0-9).
+        The neural network model is defined with two fully connected layers. The first layer has 512 neurons with ReLU activation, and the second layer has 10 neurons for each digit class (0-9).
         """)
 
         st.subheader("5. Setting Loss Function and Optimizer")
@@ -412,3 +479,5 @@ if project == "MNIST Digit Classification":
         The training history, including the training loss and accuracy over epochs, is plotted to visualize the model's learning progress.
         """)
         st.image("Pictures/TensorFlow2.png", caption='Training Loss and Accuracy', use_column_width=True)
+        st.image("Pictures/epoch_Tensor_Training1.png", caption='Training Loss and Accuracy', use_column_width=True)
+       
