@@ -1,12 +1,19 @@
-from flask import Flask, request, jsonify
 import sqlite3
 import pickle
+from flask import Flask, request, jsonify
 import numpy as np
 import pandas as pd
 
 # Initialize the Flask application
 app = Flask(__name__)
 
+# Load the model from the pickle file
+with open("models/Scaler.pkl", "rb") as f:
+    scaler = pickle.load(f)
+with open("models/forest.pkl", "rb") as f:
+    forest = pickle.load(f)    
+with open("models/SVCModel_pipeline.pkl", "rb") as f:
+    SVCModel_pipeline = pickle.load(f)    
 
 # Function to run a SQL query
 def execute_query(query):
@@ -35,6 +42,32 @@ def execute_query(query):
         # If there's an error, return the error message
         return {"error": str(e)}
 
+@app.route("/predict_titanic", methods=["POST"])
+def predict_titanic():
+    """
+    This function takes in an array of data and uses it to
+    predict against a pretrained model for the titanic data.
+    """
+    data = request.json
+    # df = pd.DataFrame(data, index=[0])
+    df = pd.DataFrame([data])
+    scaled_data = scaler.transform(df)
+    prediction = forest.predict(scaled_data)[0]
+    survival_prob = forest.predict_proba(scaled_data)[0][1]
+    return jsonify({"survived": int(prediction), "survival_prob": float(survival_prob)})
+
+
+@app.route("/predict_housing", methods=["POST"])
+def predict_housing():
+    """
+    This function takes in an array of data and uses it to
+    predict against a pretrained model for the Housing data.
+    """
+    data = request.json
+    # df = pd.DataFrame(data, index=[0])
+    df = pd.DataFrame([data])
+    prediction = SVCModel_pipeline.predict(df)[0]
+    return jsonify({"price": float(prediction)})
 
 # Route to handle requests to /query
 @app.route("/query", methods=["POST"])

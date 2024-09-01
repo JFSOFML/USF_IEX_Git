@@ -1,3 +1,4 @@
+import requests
 import streamlit as st
 import pandas as pd
 import pickle
@@ -194,11 +195,16 @@ if project == "Ames Housing Analysis":
             "Central Air": Central_Air_Binary[Central_Air],
             "Gr Liv Area": [gr_liv_area],
         }
-    )
+    ).to_dict(orient="records")[0]
+
 
     if st.button("Predict Sale Price"):
-        user_input_scaled = sc.transform(Input)
-        prediction = model.predict(user_input_scaled)[0]
+        response = requests.post(
+            "http://flask_route:5000/predict_housing", json=Input, timeout=15
+        )
+        result = response.json()
+        result_df = pd.DataFrame([result])
+        prediction = result_df["price"][0]
         st.subheader("Predicted Sale Price")
         st.write(f"${prediction:,.2f}")
     st.divider()
@@ -311,12 +317,19 @@ if project == "Titanic Survival Prediction":
             "SecondClass": class_map[SecondClass],
             "ThirdClass": class_map[ThirdClass],
         }
-    )
+    ).to_dict(orient="records")[0]
 
     loaded_pipeline = pickle.load(open("SVCModel_pipeline.pkl", "rb"))
     # Predict
     if st.button("Predict"):
-        prediction = loaded_pipeline.predict(user_input)[0]
+        response= requests.post(
+            "http://fl_container:5000/predict_titanic", json=user_input, timeout=11
+        )
+        result= response.json()
+        result_df=pd.DataFrame([result])
+        survival_prob = result_df["survival_prob"][0]
+        prediction = result_df["survived"][0]
+        
 
         if prediction == 1:  # Check if prediction indicates survival
             st.success("You Survived!")
