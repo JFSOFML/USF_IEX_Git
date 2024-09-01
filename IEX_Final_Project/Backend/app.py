@@ -51,10 +51,8 @@ def predict_titanic():
     data = request.json
     # df = pd.DataFrame(data, index=[0])
     df = pd.DataFrame([data])
-    scaled_data = scaler.transform(df)
-    prediction = forest.predict(scaled_data)[0]
-    survival_prob = forest.predict_proba(scaled_data)[0][1]
-    return jsonify({"survived": int(prediction), "survival_prob": float(survival_prob)})
+    prediction = SVCModel_pipeline.predict(df)[0]
+    return jsonify({"price": float(prediction)})
 
 
 @app.route("/predict_housing", methods=["POST"])
@@ -66,8 +64,11 @@ def predict_housing():
     data = request.json
     # df = pd.DataFrame(data, index=[0])
     df = pd.DataFrame([data])
-    prediction = SVCModel_pipeline.predict(df)[0]
-    return jsonify({"price": float(prediction)})
+    scaled_data = scaler.transform(df)
+    prediction = forest.predict(scaled_data)[0]
+    survival_prob = forest.predict_proba(scaled_data)[0][1]
+    return jsonify({"survived": int(prediction), "survival_prob": float(survival_prob)})
+   
 
 # Route to handle requests to /query
 @app.route("/query", methods=["POST"])

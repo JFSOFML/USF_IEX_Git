@@ -195,7 +195,7 @@ if project == "Ames Housing Analysis":
 
     if st.button("Predict Sale Price"):
         response = requests.post(
-            "http://flask_route:5000/predict_housing", json=Input, timeout=15
+            "http://fl_container:5000/predict_housing", json=Input, timeout=15
         )
         result = response.json()
         result_df = pd.DataFrame([result])
