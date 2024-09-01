@@ -1,7 +1,9 @@
 import streamlit as st
 import pandas as pd
 import requests
-from requests.exceptions import ConnectionError  # Handle connection errors from the requests library
+from requests.exceptions import (
+    ConnectionError,
+)  # Handle connection errors from the requests library
 import time  # Allows adding delays in execution
 
 # Set the title of the app
@@ -20,7 +22,10 @@ if st.button("Results"):
     for _ in range(5):
         try:
             # Send a POST request to the Flask service with the SQL query
-            response = requests.post("http://fl_container:5000/query", json={"query": f"{query} LIMIT {max_results}"})
+            response = requests.post(
+                "http://fl_container:5000/query",
+                json={"query": f"{query} LIMIT {max_results}"},
+            )
             if response.status_code == 200:
                 st.success("Query executed successfully!")
                 st.balloons()
@@ -36,13 +41,14 @@ if st.button("Results"):
             from_flask = response.json()
             query_data = from_flask.get("data", [])
             query_columns = from_flask.get("columns", [])
-            
+
+            #
             # Create a DataFrame from the response data
             df = pd.DataFrame(query_data, columns=query_columns)
-            
+
             # Display the DataFrame in the app
             st.dataframe(df)
-            
+
         except requests.exceptions.JSONDecodeError:
             st.error("Error: The response is not in JSON format.")
             st.write("Response content:", response.text)

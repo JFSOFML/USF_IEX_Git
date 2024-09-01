@@ -2,24 +2,26 @@ import pickle
 import streamlit as st
 
 
-
-
-st.write("""
+st.write(
+    """
 ### Model Loss & Accuracy
-""")
-st.write("""
+"""
+)
+st.write(
+    """
 Test Loss: 0.0012
 
  Accuracy: 98.03%
 
-""")
-
+"""
+)
 
 
 st.divider()
 
 st.header("Training Loop")
-st.write("""
+st.write(
+    """
 Epoch 0: Loss: 0.1448
          
 Epoch 1: Loss: 0.0311
@@ -40,4 +42,5 @@ Epoch 8: Loss: 0.0001
          
 Epoch 9: Loss: 0.0005
 
-         """)
+         """
+)
