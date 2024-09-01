@@ -1,5 +1,4 @@
 import pandas as pd
-import tensorflow
 import sqlite3
 
 # Load Titanic_data to dataframe
