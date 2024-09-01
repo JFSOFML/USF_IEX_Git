@@ -171,11 +171,6 @@ if project == "Ames Housing Analysis":
     # Predictions
     st.header("Predictions")
 
-    with open("Scaler.pkl", "rb") as f:
-        sc = pickle.load(f)
-    with open("forest.pkl", "rb") as f:
-        model = pickle.load(f)
-
     overall_qual = st.select_slider(
         "Overall Quality (1-10):", options=range(1, 11), value=5
     )
@@ -319,7 +314,6 @@ if project == "Titanic Survival Prediction":
         }
     ).to_dict(orient="records")[0]
 
-    loaded_pipeline = pickle.load(open("SVCModel_pipeline.pkl", "rb"))
     # Predict
     if st.button("Predict"):
         response= requests.post(
