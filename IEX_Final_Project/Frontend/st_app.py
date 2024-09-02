@@ -195,7 +195,7 @@ if project == "Ames Housing Analysis":
 
     if st.button("Predict Sale Price"):
         response = requests.post(
-            "http://fl_container:5000/predict_housing", json=Input, timeout=15
+            "http://:5000/predict_housing", json=Input, timeout=15
         )
         result = response.json()
         result_df = pd.DataFrame([result])
@@ -319,10 +319,10 @@ if project == "Titanic Survival Prediction":
         response= requests.post(
             "http://fl_container:5000/predict_titanic", json=user_input, timeout=11
         )
-        result= response.json()
+        result= response.json
         result_df=pd.DataFrame([result])
-        survival_prob = result_df["survival_prob"][0]
-        prediction = result_df["survived"][0]
+        #survival_prob = result_df["survival_prob"][0]
+        prediction = result_df["Survived"][0]
         
 
         if prediction == 1:  # Check if prediction indicates survival
@@ -413,7 +413,7 @@ if project == "Titanic Survival Prediction":
 if project == "MNIST Digit Classification":
     st.divider()
 
-    # Sidebar for MNIST navigation
+     # Sidebar for MNIST navigation
     st.sidebar.title("MNIST Navigation")
     mnist_page = st.sidebar.radio("Go to", ["Overview", "Pytorch", "Tensorflow"])
 

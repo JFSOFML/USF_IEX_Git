@@ -46,13 +46,17 @@ def execute_query(query):
 def predict_titanic():
     """
     This function takes in an array of data and uses it to
-    predict against a pretrained model for the titanic data.
+    predict against a pretrained model for the Titanic data.
     """
     data = request.json
-    # df = pd.DataFrame(data, index=[0])
     df = pd.DataFrame([data])
     prediction = SVCModel_pipeline.predict(df)[0]
-    return jsonify({"price": float(prediction)})
+    
+    # Assuming SVCModel_pipeline can provide probability predictions
+    #survival_prob = SVCModel_pipeline.predict_proba(df)[0][1]
+    
+    return jsonify({"Survived": int(prediction)})
+    #return jsonify({"survived": int(prediction), "survival_prob": float(survival_prob)})
 
 
 @app.route("/predict_housing", methods=["POST"])
@@ -62,12 +66,12 @@ def predict_housing():
     predict against a pretrained model for the Housing data.
     """
     data = request.json
-    # df = pd.DataFrame(data, index=[0])
     df = pd.DataFrame([data])
     scaled_data = scaler.transform(df)
     prediction = forest.predict(scaled_data)[0]
-    survival_prob = forest.predict_proba(scaled_data)[0][1]
-    return jsonify({"survived": int(prediction), "survival_prob": float(survival_prob)})
+    # Assuming forest model can provide price predictions
+    price = prediction
+    return jsonify({"price": float(price)})
    
 
 # Route to handle requests to /query
