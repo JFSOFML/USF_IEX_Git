@@ -1,8 +1,14 @@
+"""
+This Flask application serves predictions and runs SQL queries
+using pretrained models and a SQLite database.
+"""
+
+import json  # Standard library imports should come first
 import sqlite3
 import pickle
 from flask import Flask, request, jsonify
-import numpy as np
 import pandas as pd
+import werkzeug.exceptions
 
 # Initialize the Flask application
 app = Flask(__name__)
@@ -11,35 +17,29 @@ app = Flask(__name__)
 with open("models/Scaler.pkl", "rb") as f:
     scaler = pickle.load(f)
 with open("models/forest.pkl", "rb") as f:
-    forest = pickle.load(f)    
+    forest = pickle.load(f)
 with open("models/SVCModel_pipeline.pkl", "rb") as f:
-    SVCModel_pipeline = pickle.load(f)    
+    SVCModel_pipeline = pickle.load(f)
 
-# Function to run a SQL query
-def execute_query(query):
+def execute_query(sql_query):
+    """
+    Execute an SQL query and return the results.
+
+    Args:
+        sql_query (str): The SQL query to execute.
+
+    Returns:
+        dict: A dictionary with the query results or error message.
+    """
     try:
-        # Connect to the SQLite database file
         conn = sqlite3.connect("/app/DSRA_projects.db")
-
-        # Create a cursor to execute the query
         cursor = conn.cursor()
-
-        # Execute the given SQL query
-        cursor.execute(query)
-
-        # Get the column names from the result
+        cursor.execute(sql_query)
         columns = [description[0] for description in cursor.description]
-
-        # Fetch all rows of data from the query result
         data = cursor.fetchall()
-
-        # Close the database connection
         conn.close()
-
-        # Return the column names and data
         return {"columns": columns, "data": data}
-    except Exception as e:
-        # If there's an error, return the error message
+    except sqlite3.DatabaseError as e:
         return {"error": str(e)}
 
 @app.route("/predict_titanic", methods=["POST"])
@@ -51,13 +51,7 @@ def predict_titanic():
     data = request.json
     df = pd.DataFrame([data])
     prediction = SVCModel_pipeline.predict(df)[0]
-    
-    # Assuming SVCModel_pipeline can provide probability predictions
-    #survival_prob = SVCModel_pipeline.predict_proba(df)[0][1]
-    
     return jsonify({"Survived": int(prediction)})
-    #return jsonify({"survived": int(prediction), "survival_prob": float(survival_prob)})
-
 
 @app.route("/predict_housing", methods=["POST"])
 def predict_housing():
@@ -69,35 +63,29 @@ def predict_housing():
     df = pd.DataFrame([data])
     scaled_data = scaler.transform(df)
     prediction = forest.predict(scaled_data)[0]
-    # Assuming forest model can provide price predictions
-    price = prediction
-    return jsonify({"price": float(price)})
-   
+    return jsonify({"price": float(prediction)})
 
-# Route to handle requests to /query
 @app.route("/query", methods=["POST"])
 def query():
+    """
+    Run an SQL query provided in the request body.
+
+    Returns:
+        JSON response with the query result or error message.
+    """
     try:
-        # Get the data sent in the request as JSON
         request_data = request.json
-
-        # Extract the SQL query from the JSON data
-        query = request_data.get("query")
-        if not query:
-            # If no query is provided, return an error
+        sql_query = request_data.get("query")
+        if not sql_query:
             return jsonify({"error": "No query provided"}), 400
-
-        # Run the query using the execute_query function
-        result = execute_query(query)
-
-        # Return the query result as a JSON response
+        result = execute_query(sql_query)
         return jsonify(result)
-    except Exception as e:
-        # If there's an error, log it and return the error message
-        app.logger.error(f"Error: {e}")
+    except sqlite3.DatabaseError as e:  # Specific database exception
+        app.logger.error("SQL Error: %s", e)
         return jsonify({"error": str(e)}), 500
-
-
-# Start the Flask application
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True)
+    except werkzeug.exceptions.BadRequest as e:  # Specific Flask-related error
+        app.logger.error("Request Error: %s", e)
+        return jsonify({"error": str(e)}), 400
+    except json.JSONDecodeError as e:  # Handle JSON decoding error
+        app.logger.error("JSON Decode Error: %s", e)
+        return jsonify({"error": "Invalid JSON format"}), 400
