@@ -1,8 +1,8 @@
-import streamlit as st
-import Housing_Brief as app
+"""Prediction tool page for streamlit app"""
+
 import pickle
+import streamlit as st
 import pandas as pd
-from sklearn.preprocessing import StandardScaler
 
 st.header("Predictions")
 
@@ -11,8 +11,6 @@ with open("Scaler.pkl", "rb") as f:
 with open("forest.pkl", "rb") as f:
     model = pickle.load(f)
 
-    # columns = ['Overall Qual', 'Overall Cond', 'Gr Liv Area',
-    #    'Central Air', 'Total Bsmt SF', 'SalePrice']
 
 overall_qual = st.select_slider(
     "Overall Quality (1-10):", options=range(1, 11), value=5

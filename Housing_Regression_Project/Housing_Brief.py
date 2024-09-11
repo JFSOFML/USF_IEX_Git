@@ -1,19 +1,13 @@
+"""Entry file for streamlit app"""
+
 import pickle
 import pandas as pd
 
-import numpy as np
 from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LinearRegression
-from sklearn.linear_model import RANSACRegressor
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-from sklearn.linear_model import Lasso
-from sklearn.linear_model import Ridge
-from sklearn.linear_model import ElasticNet
-from sklearn.preprocessing import PolynomialFeatures
-import streamlit as st  # streamlit run Housing.py -- Run that
 from sklearn.ensemble import RandomForestRegressor
 from sklearn import metrics
+import streamlit as st  # streamlit run Housing.py -- Run that
 
 st.header("Housing Prices Predictions")
 st.write(
@@ -61,21 +55,19 @@ st.write(
 
 ```df.isnull().sum()```
 
-1. **Binary Encoding**: Converted 'Central Air' from categorical ('N', 'Y') to binary (0, 1) representation.
-2. **Missing Values Check**: Evaluated each column for missing values to ensure data integrity.
+1. **Binary Encoding**: Converted 'Central Air' from categorical \
+    ('N', 'Y') to binary (0, 1) representation.
+2. **Missing Values Check**: Evaluated each column for missing \
+    values to ensure data integrity.
 """
 )
 
 
 df["Central Air"] = df["Central Air"].map({"N": 0, "Y": 1})
 
-df.isnull().sum()
-
-# remove rows that contain missing values
-
 df = df.dropna(axis=0)
 df.isnull().sum()
-df
+
 
 X1 = df[
     [
@@ -103,9 +95,6 @@ forest.fit(X_train, y_train)
 y_pred = forest.predict(X_test)
 R2 = metrics.r2_score(y_test, y_pred)
 
-### Insert Code here for New Addtions
-
-
 with open("Scaler.pkl", "wb") as f:
     pickle.dump(sc, f)
 with open("forest.pkl", "wb") as f:
@@ -116,6 +105,8 @@ st.header("Summary")
 st.write("I used a Random Forest Regressor")
 st.write("I used a StandardScaler")
 st.write(
-    f"My R2 score was {(round(R2,2)*100)}%, indicating that it accurately predicts the sale prices of houses about 86% of the time, compared to the actual sale prices."
+    f"My R2 score was {(round(R2,2)*100)}%, indicating that it \
+        accurately predicts the sale prices of houses about 86% \
+            of the time, compared to the actual sale prices."
 )
 st.write("My MAE was approximately $21,000")

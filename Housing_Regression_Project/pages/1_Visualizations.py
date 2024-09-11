@@ -1,11 +1,8 @@
+"""Viz page for streamlit app"""
 import streamlit as st
-import Housing_Brief as app
-import matplotlib.pyplot as plt
-from mlxtend.plotting import heatmap
-import seaborn as sns
-from mlxtend.plotting import scatterplotmatrix
-import numpy as np
-import plotly.graph_objects as go
+import plotly.figure_factory as ff
+import plotly.express as px
+import housing_brief as app
 
 st.header("Visulizations")
 st.divider()
@@ -25,10 +22,6 @@ st.write(f"{filtered_data["SalePrice"].count()} results are displayed.")
 
 st.divider()
 
-
-import plotly.express as px
-import pandas as pd
-
 # Assuming you have your data in a DataFrame 'app.df'
 fig = px.scatter_matrix(
     app.df,
@@ -40,12 +33,11 @@ fig = px.scatter_matrix(
     height=800,  # Nice color palette
 )
 
-fig.update_traces(diagonal_visible=False, showupperhalf=False, marker=dict(opacity=0.7))
+fig.update_traces(diagonal_visible=False, showupperhalf=False, marker={"opacity": 0.7})
 fig.update_xaxes(tickangle=45)
 
 st.plotly_chart(fig)
 st.divider()
-import plotly.figure_factory as ff
 
 st.subheader("Correlation Matrix")
 corr_matrix = app.df.corr()
@@ -56,19 +48,18 @@ fig = ff.create_annotated_heatmap(
     annotation_text=corr_matrix.round(2).values,
     colorscale="Viridis",
 )
-fig.update_layout(xaxis=dict(tickangle=45))
+fig.update_layout(xaxis={"tickangle": 45})
 st.plotly_chart(fig)
 st.divider()
 
 st.subheader("Learning Curve")
-st.image("Pictures\Learning_Curve_Housing.png")
+st.image(r"Pictures/Learning_Curve_Housing.png")
 st.divider()
 st.subheader("Validation Curve")
-st.image("Pictures\Housing_Validation_Curve.png")
-st.write("R2 Score = 0.8412 ± 0.0607")
+st.image(r"Pictures/Housing_Validation_Curve.png")
+st.write("R2 Score = 0.8412 Â± 0.0607")
 st.divider()
-
 
 st.divider()
 st.subheader("KMeans++ Elbow Plot")
-st.image("Pictures\K_means++.png")
+st.image(r"Pictures/K_means++.png")
