@@ -1,5 +1,7 @@
+"""Neural Network streamlit page"""
+
 import streamlit as st
-import pickle
+
 
 st.title("Pytorch!")
 st.divider()
@@ -51,6 +53,6 @@ st.divider()
 st.header("Visulizations")
 
 st.subheader("50th Index of dataset")
-st.image("Pictures\MNIST_img.png")
+st.image(r"Pictures/MNIST_img.png")
 
 st.balloons()

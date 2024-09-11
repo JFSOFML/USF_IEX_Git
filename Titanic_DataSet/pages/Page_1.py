@@ -1,16 +1,16 @@
+"""Viz Page for streamlit app"""
+
 import pickle
 import streamlit as st
-import app
 
 # seaborn offers customizable visualizations
 import seaborn as sns
 
 # this allows you to plot charts
 import matplotlib.pyplot as plt
-import plotly.graph_objects as go
 import plotly.express as px
-from sklearn.model_selection import learning_curve
-import numpy as np
+
+import app
 
 
 with open("SVCModel.pkl", "rb") as f:
@@ -18,12 +18,6 @@ with open("SVCModel.pkl", "rb") as f:
 
 
 st.header("Visualizations")
-
-# app.train
-
-# app.test
-
-# app.gender_submission
 
 
 selected_variables = app.train[
@@ -46,7 +40,7 @@ sns.heatmap(
 st.pyplot(plt.gcf())
 # The below shows the correlation highest positive correlation
 
-app.Titanic
+st.dataframe(app.Titanic)
 
 
 # Copy the DataFrame to avoid modifying the original data
@@ -69,13 +63,13 @@ fig.update_layout(
     xaxis_title="Outcome",
     yaxis_title="Count",
     barmode="group",
-    bargap=0.2,  # Adjusted gap
+    bargap=0.2,
     xaxis_title_font_size=14,
     yaxis_title_font_size=14,
     title_font_size=16,
     legend_title_text="Outcome",
-    legend=dict(x=0.8, y=0.9, font_size=12),
-    margin=dict(l=50, r=50, t=50, b=50),
+    legend={"x": 0.8, "y": 0.9, "font_size": 12},  # Dictionary literal
+    margin={"l": 50, "r": 50, "t": 50, "b": 50},  # Dictionary literal
 )
 
 # Displays in my Streamlit app
@@ -85,17 +79,17 @@ st.plotly_chart(fig)
 st.divider()
 
 st.subheader("Learning Curve")
-st.image("Pictures\Titanic_LearningCurve.png")
+st.image(r"Pictures/Titanic_LearningCurve.png")
 st.caption("Very High Bias, Accuracy Score: 0.9689 ± 0.0349")
 
 st.divider()
 
 st.subheader("Validation Curve")
-st.image("Pictures\Titanic_Validation_Curve.png")
+st.image(r"Pictures/Titanic_Validation_Curve.png")
 st.caption("High Bias, Low Variance ")
 
 st.divider()
 
 st.subheader("KMeans++ Plot")
-st.image("Pictures\Titanic_KMeans.png")
+st.image(r"Pictures/Titanic_KMeans.png")
 st.caption("Cluster Decrease = Distortion increase")

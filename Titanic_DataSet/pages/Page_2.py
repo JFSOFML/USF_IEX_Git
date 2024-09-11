@@ -1,14 +1,14 @@
+"""Streamlit prediction tool"""
+
+import pickle
 import streamlit as st
 import pandas as pd
-import pickle
-from sklearn.preprocessing import StandardScaler
 
 
 # Load pre-trained model and scaler
-loaded_pipeline = pickle.load(open("SVCModel_pipeline.pkl", "rb"))
-# with open('SVCModel_pipeline.pkl', 'rb') as f:
-# pipeline = pickle.load(f)
-# scaler = StandardScaler()
+with open("SVCModel_pipeline.pkl", "rb") as f:
+    loaded_pipeline = pickle.load(f)
+
 
 # Define mappings for user input
 sex_map = {"male": 0, "female": 1}
