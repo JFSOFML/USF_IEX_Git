@@ -2,7 +2,7 @@
 import streamlit as st
 import plotly.figure_factory as ff
 import plotly.express as px
-import housing_brief as app
+import housing_brief1 as app
 
 st.header("Visulizations")
 st.divider()
