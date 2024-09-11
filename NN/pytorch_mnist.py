@@ -1,14 +1,13 @@
 """Pytorch Analysis"""
 # Import all modules you will use
-import torchvision # pip install
-import torch.nn as nn
-import torch.optim as optim
 from torchvision import datasets, transforms
-from matplotlib import pyplot as plt
+import torch
+from torch import nn, optim
 import torch.nn.functional as F
 from torch.utils.tensorboard import SummaryWriter
-import torch
-
+from matplotlib import pyplot as plt
+import torchvision.models
+import torchvision.utils
 
 # create a tensorbaord writer
 writer = SummaryWriter()
@@ -18,9 +17,11 @@ writer = SummaryWriter()
 # Load in the dataset
 
 pick = datasets.MNIST(root='./data', train=True, download=True)
-
-train_dataset = datasets.MNIST(root='./data', train=True, download=True, transform=transforms.ToTensor())#This specifies that we want the test part of the MNIST dataset.
-test_dataset = datasets.MNIST(root='./data', train=False, download=True, transform=transforms.ToTensor())
+#This specifies that we want the test part of the MNIST dataset.
+train_dataset = datasets.MNIST(root='./data', train=True, download=True,\
+                                transform=transforms.ToTensor())
+test_dataset = datasets.MNIST(root='./data', train=False, download=True,\
+                               transform=transforms.ToTensor())
 
 
 image, label = pick[50]
@@ -29,18 +30,16 @@ plt.imshow(image, cmap="gray")
 plt.title(f"{label}")
 plt.show()
 
-
-train_dataset[1]
-
-
 # Data cleaning or for NN - work on transforming the data
- #Takes list of Transformations & composes them into single trans(Applied in order). Converts images into tensors. Then normalizes tensor images.
+# Takes list of Transformations & composes them into single trans(Applied in order).
+# Converts images into tensors. Then normalizes tensor images.
 transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))])
 
 
 
 
-# Create Data Loaders on the data to make it easy to feed data to the model in batches.
+# Create Data Loaders on the data to make it
+# easy to feed data to the model in batches.
 
 
 #make the data loaders
@@ -56,19 +55,23 @@ class Net(nn.Module):                      # Defines a new class Net that inheri
     """Define a class to be the NN model (must have an __init__ and a forward function)"""
     def __init__(self):
         """Defines a new class Net that inherits from nn.Module"""
-        super(Net, self).__init__()
+        super().__init__()
         self.fc1 = nn.Linear(28*28, 512)   # Input: 28x28 image, Hidden layer: 512 neurons
         self.fc2 = nn.Linear(512, 10)     # Output: 10 classes (digits 0-9)
 
     def forward(self, x):
-        """# specifies how the input data flows through the network layers."""
-        x = x.view(-1, 28*28)             # Flatten the image (Removes some of the dimensions)
-        x = F.relu(self.fc1(x))         # May not always be the same. ReLU is reliable.
-        x = self.fc2(x)                #   Passes the output from the previous layer to the second fully connected layer fc2
-        return x                      #   Returns the final output of the network.
+        """Specifies how the input data flows through the network layers."""
+        # Flatten the image (Removes some of the dimensions)
+        x = x.view(-1, 28*28)
+         # May not always be the same. ReLU is reliable.
+        x = F.relu(self.fc1(x))
+        # Passes the output from the previous layer to the second fully connected layer fc2
+        x = self.fc2(x)
+        # Returns the final output of the network.
+        return x
 
 
-model = torchvision.models.resnet50(False)
+model = torchvision.models.resnet50(pretrained=False)
 # Have ResNet model take in grayscale rather than RGB
 model.conv1 = torch.nn.Conv2d(1, 64, kernel_size=7, stride=2, padding=3, bias=False)
 images, labels = next(iter(train_loader))
@@ -96,9 +99,9 @@ train_losses = []
 train_accuracies = []
 for epoch in range(10):
     model.train()  # Set the model to training mode
-    epoch_loss = 0
+    EPOCH_LOSS = 0
     CORRECT = 0
-    total = 0
+    TOTAL = 0
     for batch_idx, (data, target) in enumerate(train_loader):
         optimizer.zero_grad()
         output = model(data)
@@ -106,17 +109,17 @@ for epoch in range(10):
         loss.backward()
         optimizer.step()
 
-        epoch_loss += loss.item()
+        EPOCH_LOSS += loss.item()
         pred = output.argmax(dim=1)
         CORRECT += pred.eq(target).sum().item()
-        total += target.size(0)
+        TOTAL += target.size(0)
 
-    epoch_loss /= len(train_loader)
-    accuracy = 100. * CORRECT / total
-    train_losses.append(epoch_loss)
+    EPOCH_LOSS /= len(train_loader)
+    accuracy = 100. * CORRECT / TOTAL
+    train_losses.append(EPOCH_LOSS)
     train_accuracies.append(accuracy)
 
-    print(f'Epoch {epoch}: Loss: {epoch_loss:.4f}, Accuracy: {accuracy:.2f}%')
+    print(f'Epoch {epoch}: Loss: {EPOCH_LOSS:.4f}, Accuracy: {accuracy:.2f}%')
 
 
 
@@ -128,7 +131,8 @@ torch.save(model.state_dict(), MODEL_PATH)
 
 
 
-## Define the training loop then and print the progress for the loop either every epoch or every 5 or 10 epochs.
+# Define the training loop then and print the progress
+# for the loop either every epoch or every 5 or 10 epochs.
 #for epoch in range(10): # where I left off @ me
 #    for batch_idx, (data, target) in enumerate(train_loader):
 #        optimizer.zero_grad()
@@ -181,8 +185,7 @@ plt.xlabel('Epoch')
 plt.ylabel('Accuracy')
 plt.legend()
 plt.grid(axis='y')
-
 plt.tight_layout()
 plt.show()
 
-
+# End of file (EOF)
