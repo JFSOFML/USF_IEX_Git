@@ -1,10 +1,10 @@
+"""Streamlit display for DockerCompose"""
+
+import time  # Allows adding delays in execution
+import requests
+from requests.exceptions import ConnectionError as RequestsConnectionError
 import streamlit as st
 import pandas as pd
-import requests
-from requests.exceptions import (
-    ConnectionError,
-)  # Handle connection errors from the requests library
-import time  # Allows adding delays in execution
 
 # Set the title of the app
 st.title("Docker Compose Pipeline Demo")
@@ -17,28 +17,29 @@ max_results = st.sidebar.slider("Max Results", min_value=1, max_value=100, value
 
 # Button to execute the query
 if st.button("Results"):
-    response = None
+    RESPONSE = None
     # Retry the request up to 5 times if it fails
     for _ in range(5):
         try:
             # Send a POST request to the Flask service with the SQL query
-            response = requests.post(
+            RESPONSE = requests.post(
                 "http://fl_container:5000/query",
                 json={"query": f"{query} LIMIT {max_results}"},
+                timeout=15,
             )
-            if response.status_code == 200:
+            if RESPONSE.status_code == 200:
                 st.success("Query executed successfully!")
                 st.balloons()
                 break
-        except ConnectionError:
+        except RequestsConnectionError:
             st.warning("Waiting for the Flask service to be available...")
             time.sleep(5)  # Wait for 5 seconds before retrying
 
     # Process the response from the Flask service
-    if response and response.status_code == 200:
+    if RESPONSE and RESPONSE.status_code == 200:
         try:
             # Parse the JSON response
-            from_flask = response.json()
+            from_flask = RESPONSE.json()
             query_data = from_flask.get("data", [])
             query_columns = from_flask.get("columns", [])
 
@@ -51,10 +52,10 @@ if st.button("Results"):
 
         except requests.exceptions.JSONDecodeError:
             st.error("Error: The response is not in JSON format.")
-            st.write("Response content:", response.text)
+            st.write("Response content:", RESPONSE.text)
     else:
-        if response:
-            st.error(f"Error: Received status code {response.status_code}")
-            st.write("Response content:", response.text)
+        if RESPONSE:
+            st.error(f"Error: Received status code {RESPONSE.status_code}")
+            st.write("Response content:", RESPONSE.text)
         else:
             st.error("Error: Could not connect to the Flask service")
