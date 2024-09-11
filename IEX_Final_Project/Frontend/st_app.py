@@ -1,7 +1,8 @@
+"""Imports required for this project"""
+import pickle
 import requests
 import streamlit as st
 import pandas as pd
-import pickle
 import plotly.express as px
 import plotly.figure_factory as ff
 import Housing_Brief as app
@@ -15,24 +16,35 @@ st.header("Overview")
 with st.expander("IEX Final Project Overview"):
     st.write(
         """
-This app includes projects like the Titanic Survival Prediction, Ames Housing Data Analysis, and MNIST Digit Classification. Each project is designed to showcase different machine learning techniques:
+ This app includes projects like\
+     the Titanic Survival Prediction,\
+ Ames Housing Data Analysis,and MNIST Digit Classification.\
+   Each project is designed to showcase different machine learning techniques:\
 
- ### Titanic Survival Prediction 
-- This section focuses on classification, predicting survival outcomes based on passenger data. It demonstrates binary classification techniques using logistic regression and support vector machines. It highlights the use of ensemble learning methods, such as Bagging and Boosting, to improve prediction accuracy.
+ ### Titanic Survival Prediction
+- This section focuses on classification, predicting survival outcomes based on passenger data.\
+ It demonstrates binary classification techniques\
+      using logistic regression and support vector machines.\
+   It highlights the use of ensemble learning methods,\
+      such as Bagging and Boosting, to improve prediction accuracy.
 
  ### Ames Housing Data Analysis
-- This section explores regression techniques, using housing data to predict sale prices. 
+- This section explores regression techniques, using housing data to predict sale prices.
 
  ### MNIST Digit Classification
-- This project utilizes Convolutional Neural Networks (CNNs) to classify handwritten digits, demonstrating the application of deep learning in image recognition tasks.
+- This project utilizes Convolutional Neural Networks (CNNs) to classify handwritten digits,\
+      demonstrating the application of deep learning in image recognition tasks.
 
 Navigate through the sections using the sidebar to explore different analyses and models.
 
 ***Technology Stack:***
-             
-- **Docker-Compose:** Used for orchestrating the development environment, ensuring that all components work seamlessly together.
-- **Flask:** Acts as the backend framework, handling API requests and managing data flow between the user interface and machine learning models.
-- **Streamlit:** Serves as the frontend, providing an interactive and user-friendly interface for visualizing data and interacting with the models.
+
+- **Docker-Compose:** Used for orchestrating the development environment,\
+      ensuring that all components work seamlessly together.
+- **Flask:** Acts as the backend framework, handling API requests and\
+      managing data flow between the user interface and machine learning models.
+- **Streamlit:** Serves as the frontend, providing an interactive and\
+      user-friendly interface for visualizing data and interacting with the models.
 """
     )
 st.divider()
@@ -57,28 +69,42 @@ if project == "Ames Housing Analysis":
     with st.expander("Project Overview"):
         st.write(
             """
-        This project involves predicting housing prices in Ames, Iowa, using various regression techniques. The goal is to create a model that accurately estimates the sale price of homes based on several features. Here are the main steps and processes involved:
+        This project involves predicting housing prices in Ames, Iowa, \
+            using various regression techniques. The goal is to create a model\
+                  that accurately estimates the sale price of homes based on several features.\
+                      Here are the main steps and processes involved:
 
         ### Data Preprocessing
-        - **Loading Data:** The dataset was imported, focusing on specific features such as 'Overall Qual', 'Overall Cond', 'Gr Liv Area', 'Central Air', 'Total Bsmt SF', and 'SalePrice'.
+        - **Loading Data:** The dataset was imported, focusing on specific features\
+              such as 'Overall Qual', 'Overall Cond', 'Gr Liv Area', 'Central Air',\
+                  'Total Bsmt SF', and 'SalePrice'.
         - **Feature Engineering:**
-            - Converted categorical data into numerical format, such as mapping 'Central Air' to binary values.
+            - Converted categorical data into numerical format,\
+                  such as mapping 'Central Air' to binary values.
             - Dropped any rows with missing values to maintain data integrity.
-        
+
         ### Model Training and Evaluation
-        - **Model Selection:** Chose `RandomForestRegressor` for its robustness and ability to handle various feature interactions.
-        - **Pipeline Setup:** Created a pipeline integrating data scaling (`StandardScaler`) and the regression model to streamline the training process.
-        - **Hyperparameter Tuning:** Utilized `RandomizedSearchCV` to optimize the hyperparameters of the Random Forest model, such as the number of estimators and maximum depth.
-        - **Model Evaluation:** 
-            - Evaluated the model using metrics like R^2, Mean Squared Error (MSE), and Mean Absolute Error (MAE) to assess performance.
-            - Achieved a strong R^2 score, indicating the model's ability to explain the variance in housing prices.
+        - **Model Selection:** Chose `RandomForestRegressor` for its robustness\
+              and ability to handle various feature interactions.
+        - **Pipeline Setup:** Created a pipeline integrating data scaling (`StandardScaler`)\
+              and the regression model to streamline the training process.
+        - **Hyperparameter Tuning:** Utilized `RandomizedSearchCV` to optimize\
+              the hyperparameters of the Random Forest model, such as the number of estimators and maximum depth.
+        - **Model Evaluation:**
+            - Evaluated the model using metrics like R^2, Mean Squared Error (MSE), \
+                and Mean Absolute Error (MAE) to assess performance.
+            - Achieved a strong R^2 score, indicating the model's ability to explain\
+                  the variance in housing prices.
 
         ### Learning and Validation Curves
-        - **Learning Curve:** Plotted learning curves to visualize the training and cross-validation scores, helping to identify underfitting or overfitting.
-        - **Validation Curve:** Analyzed how the model's performance varies with different hyperparameter values, specifically the number of estimators in the Random Forest.
+        - **Learning Curve:** Plotted learning curves to visualize the training and cross-validation scores,\
+              helping to identify underfitting or overfitting.
+        - **Validation Curve:** Analyzed how the model's performance varies with different hyperparameter values,\
+              specifically the number of estimators in the Random Forest.
 
         ### Results and Insights
-        - **Model Performance:** The final model showed a high level of accuracy in predicting house prices, with R^2 scores indicating good model fit.
+        - **Model Performance:** The final model showed a high level of accuracy in predicting house prices,\
+              with R^2 scores indicating good model fit.
         """
         )
     st.divider()
@@ -135,10 +161,14 @@ if project == "Ames Housing Analysis":
     st.image("Pictures/Learning_Curve_Housing.png")
     st.write(
         """
-    **What It Shows**: This graph shows how the model's performance changes as the number of training examples increases.
+    **What It Shows**: This graph shows how the model's performance changes as the number\
+          of training examples increases.
     - **Training Score (Green Line)**: How well the model fits the training data.
     - **Cross-Validation Score (Red Line)**: How well the model performs on unseen data.
-    - **Interpretation**: The model performs well on the training data, but there is a gap between the training and cross-validation scores, indicating some overfitting. The cross-validation score improves with more training data but starts to plateau, suggesting that adding more data might not significantly improve performance.
+    - **Interpretation**: The model performs well on the training data, but there is a gap\
+          between the training and cross-validation scores, indicating some overfitting.\
+              The cross-validation score improves with more training data but starts to plateau,\
+                  suggesting that adding more data might not significantly improve performance.
     """
     )
 
@@ -150,7 +180,8 @@ if project == "Ames Housing Analysis":
         """
     **What It Shows**: This graph helps determine the optimal number of clusters for K-Means clustering.
     - **Distortion**: The sum of squared distances from each point to its assigned cluster center.
-    - **Interpretation**: The "elbow" point, where the distortion decreases more slowly, suggests the optimal number of clusters. Here, it appears around 3 or 4 clusters.
+    - **Interpretation**: The "elbow" point, where the distortion decreases more slowly,\
+          suggests the optimal number of clusters. Here, it appears around 3 or 4 clusters.
     """
     )
     st.divider()
@@ -159,12 +190,13 @@ if project == "Ames Housing Analysis":
     st.subheader("Model Performance Metrics")
     st.write(
         """
-    
+
     **MAE Explanation**:
     - on average, our predicted house prices are off by $21,000 from the actual prices.
 
     **R^2 Score**:
-    - **Explanation**: An R^2 score of 0.86 means that 86% of the variability in house prices can be explained by the model. This is a strong indication that the model is performing well.
+    - **Explanation**: An R^2 score of 0.86 means that 86% of the variability in house prices\
+          can be explained by the model. This is a strong indication that the model is performing well.
     """
     )
 
@@ -182,20 +214,17 @@ if project == "Ames Housing Analysis":
     Central_Air_Binary = {"Yes": 1, "No": 0}
     total_bsmt_sf = st.slider("Total Basement SF (sq. ft.):", 0, 3000, 1500)
 
-    Input = pd.DataFrame(
-        {
+    Input ={
             "Overall Qual": [overall_qual],
             "Overall Cond": [overall_cond],
             "Total Bsmt SF": [total_bsmt_sf],
             "Central Air": Central_Air_Binary[Central_Air],
             "Gr Liv Area": [gr_liv_area],
         }
-    ).to_dict(orient="records")[0]
-
 
     if st.button("Predict Sale Price"):
         response = requests.post(
-            "http://:5000/predict_housing", json=Input, timeout=15
+            "http://fl_container:5000/predict_housing", json=Input, timeout=15
         )
         result = response.json()
         result_df = pd.DataFrame([result])
@@ -209,16 +238,17 @@ if project == "Ames Housing Analysis":
     with st.expander("Learn more about ensemble learning techniques"):
         st.write(
             """
-        ### Bagging: 
-        Bagging reduces variance by training multiple instances of a model on different subsets of the data and averaging their predictions.
+        ### Bagging:
+        Bagging reduces variance by training multiple instances of a model\
+              on different subsets of the data and averaging their predictions.
 
-        ### Boosting: 
+        ### Boosting:
         Boosting is an iterative technique that adjusts the weight of an observation based on the last classification.
 
-        ### Stacking: 
+        ### Stacking:
         Stacking involves training multiple models and using another model to combine their outputs.
 
-        ### Voting: 
+        ### Voting:
         Voting is an ensemble method where multiple models vote on the output, and the most common prediction is selected.
         """
         )
@@ -246,7 +276,8 @@ if project == "Titanic Survival Prediction":
     with st.expander("Titanic Overview"):
         st.write(
             """
-        This project focuses on predicting the survival of passengers on the Titanic using machine learning techniques. Below are the key steps and processes involved:
+        This project focuses on predicting the survival of passengers on the Titanic using machine learning techniques.\
+              Below are the key steps and processes involved:
 
         ### Data Preprocessing & Exploratory Data Analysis (EDA)
         - **Loading Data:** Imported the train, test, and gender submission datasets.
@@ -256,8 +287,9 @@ if project == "Titanic Survival Prediction":
         - **Handling Missing Values:** Filled missing 'Age' values with the mean age from the dataset.
         - **Data Merging:** Merged test data with the gender submission data on 'PassengerId' to create a unified test set.
 
-        
-        - **Visualization:** Used various visualization techniques to explore data distributions and correlations, helping to understand the underlying patterns and relationships in the data.
+
+        - **Visualization:** Used various visualization techniques to explore data distributions and correlations,\
+              helping to understand the underlying patterns and relationships in the data.
 
         """
         )
@@ -285,7 +317,7 @@ if project == "Titanic Survival Prediction":
           - Decision Tree Accuracy: 95.7%
           - Random Forest Accuracy: 93.1%
           - **SVC Accuracy (Standard Scaler): 98.6%**
-        
+
         """
         )
 
@@ -304,26 +336,24 @@ if project == "Titanic Survival Prediction":
     age = st.slider("Age:", 0, 100, 30)
 
     # Create user input DataFrame
-    user_input = pd.DataFrame(
-        {
+    user_input = {
             "Age": [age],
             "Sex_binary": sex_map[sex],
             "FirstClass": class_map[FirstClass],
             "SecondClass": class_map[SecondClass],
             "ThirdClass": class_map[ThirdClass],
         }
-    ).to_dict(orient="records")[0]
 
     # Predict
     if st.button("Predict"):
         response= requests.post(
             "http://fl_container:5000/predict_titanic", json=user_input, timeout=11
         )
-        result= response.json
+        result= response.json()
         result_df=pd.DataFrame([result])
         #survival_prob = result_df["survival_prob"][0]
         prediction = result_df["Survived"][0]
-        
+
 
         if prediction == 1:  # Check if prediction indicates survival
             st.success("You Survived!")
@@ -399,11 +429,11 @@ if project == "Titanic Survival Prediction":
     st.write(
         """
     Bagging Model Accuracy: 83.5%
-            
+
     Boosting Model Accuracy: 92.1%
-            
+
     Stacking Model Accuracy: 84.7%
-            
+
     Voting Model Accuracy: 93.5%
     """
     )
@@ -498,23 +528,23 @@ if project == "MNIST Digit Classification":
         st.write(
             """
         Epoch 0: Loss: 0.1448
-                
+
         Epoch 1: Loss: 0.0311
-                
+
         Epoch 2: Loss: 0.0391
-                
+
         Epoch 3: Loss: 0.0193
-                
+
         Epoch 4: Loss: 0.0075
-                
+
         Epoch 5: Loss: 0.0761
-                
+
         Epoch 6: Loss: 0.0200
-                
+
         Epoch 7: Loss: 0.0181
-                
+
         Epoch 8: Loss: 0.0001
-                
+
         Epoch 9: Loss: 0.0005
         """
         )
@@ -578,7 +608,7 @@ if project == "MNIST Digit Classification":
         - **Dense Layer**: A fully connected layer with 128 neurons and ReLU activation.
         - **Dropout Layer**: A dropout layer with a 20% dropout rate to prevent overfitting.
         - **Dense Layer**: The output layer with 10 neurons (one for each digit class) and softmax activation.
-        
+
         The model is compiled with the Adam optimizer, sparse categorical cross-entropy loss, and accuracy as the metric.
         """
         )

@@ -1,0 +1,6 @@
+{
+    "files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": false,
+    "editor.defaultFoldingRangeProvider": "mikoz.black-py",
+    "editor.formatOnSave": false
+}

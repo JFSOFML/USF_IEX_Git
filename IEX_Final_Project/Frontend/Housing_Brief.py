@@ -61,7 +61,8 @@ st.write(
 
 ```df.isnull().sum()```
 
-1. **Binary Encoding**: Converted 'Central Air' from categorical ('N', 'Y') to binary (0, 1) representation.
+1. **Binary Encoding**: Converted 'Central Air' from categorical\
+      ('N', 'Y') to binary (0, 1) representation.
 2. **Missing Values Check**: Evaluated each column for missing values to ensure data integrity.
 """
 )
@@ -75,7 +76,7 @@ df.isnull().sum()
 
 df = df.dropna(axis=0)
 df.isnull().sum()
-df
+
 
 X1 = df[
     [
@@ -116,6 +117,10 @@ st.header("Summary")
 st.write("I used a Random Forest Regressor")
 st.write("I used a StandardScaler")
 st.write(
-    f"My R2 score was {(round(R2,2)*100)}%, indicating that it accurately predicts the sale prices of houses about 86% of the time, compared to the actual sale prices."
+    f"My R2 score was {(round(R2,2)*100)}%, \
+        indicating that it accurately predicts\
+              the sale prices of houses about 86%\
+                  of the time, compared to the\
+                      actual sale prices."
 )
 st.write("My MAE was approximately $21,000")

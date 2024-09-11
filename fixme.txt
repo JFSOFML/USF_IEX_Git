@@ -1,0 +1,347 @@
+
+************* Module Frontend.Housing_Brief
+
+IEX_Final_Project\Frontend\Housing_Brief.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+IEX_Final_Project\Frontend\Housing_Brief.py:1:0: C0103: Module name "Housing_Brief" doesn't conform to snake_case naming style (invalid-name)
+IEX_Final_Project\Frontend\Housing_Brief.py:78:0: W0104: Statement seems to have no effect (pointless-statement)
+IEX_Final_Project\Frontend\Housing_Brief.py:15:0: C0412: Imports from package sklearn are not grouped (ungrouped-imports)
+IEX_Final_Project\Frontend\Housing_Brief.py:4:0: W0611: Unused numpy imported as np (unused-import)
+IEX_Final_Project\Frontend\Housing_Brief.py:6:0: W0611: Unused LinearRegression imported from sklearn.linear_model (unused-import)
+IEX_Final_Project\Frontend\Housing_Brief.py:7:0: W0611: Unused RANSACRegressor imported from sklearn.linear_model (unused-import)
+IEX_Final_Project\Frontend\Housing_Brief.py:9:0: W0611: Unused mean_squared_error imported from sklearn.metrics (unused-import)
+IEX_Final_Project\Frontend\Housing_Brief.py:9:0: W0611: Unused mean_absolute_error imported from sklearn.metrics (unused-import)
+IEX_Final_Project\Frontend\Housing_Brief.py:9:0: W0611: Unused r2_score imported from sklearn.metrics (unused-import)
+IEX_Final_Project\Frontend\Housing_Brief.py:10:0: W0611: Unused Lasso imported from sklearn.linear_model (unused-import)
+IEX_Final_Project\Frontend\Housing_Brief.py:11:0: W0611: Unused Ridge imported from sklearn.linear_model (unused-import)
+IEX_Final_Project\Frontend\Housing_Brief.py:12:0: W0611: Unused ElasticNet imported from sklearn.linear_model (unused-import)
+IEX_Final_Project\Frontend\Housing_Brief.py:13:0: W0611: Unused PolynomialFeatures imported from sklearn.preprocessing (unused-import)
+************* Module Frontend.NeuralNetwork_MNIST
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:20:0: C0301: Line too long (107/100) (line-too-long)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:22:0: C0301: Line too long (153/100) (line-too-long)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:23:0: C0301: Line too long (132/100) (line-too-long)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:33:0: C0301: Line too long (374/100) (line-too-long)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:35:0: C0301: Line too long (112/100) (line-too-long)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:39:0: C0301: Line too long (138/100) (line-too-long)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:45:0: C0301: Line too long (132/100) (line-too-long)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:46:0: C0301: Line too long (129/100) (line-too-long)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:54:0: C0301: Line too long (111/100) (line-too-long)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:62:0: C0301: Line too long (155/100) (line-too-long)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:69:0: C0301: Line too long (112/100) (line-too-long)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:76:0: C0301: Line too long (150/100) (line-too-long)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:83:0: C0301: Line too long (188/100) (line-too-long)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:90:0: C0301: Line too long (143/100) (line-too-long)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:97:0: C0301: Line too long (159/100) (line-too-long)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:134:0: C0301: Line too long (119/100) (line-too-long)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:157:0: C0301: Line too long (111/100) (line-too-long)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:165:0: C0301: Line too long (156/100) (line-too-long)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:172:0: C0301: Line too long (146/100) (line-too-long)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:186:0: C0301: Line too long (106/100) (line-too-long)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:188:0: C0301: Line too long (117/100) (line-too-long)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:195:0: C0301: Line too long (151/100) (line-too-long)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:205:0: C0301: Line too long (142/100) (line-too-long)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:212:0: C0301: Line too long (134/100) (line-too-long)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:225:0: C0301: Line too long (103/100) (line-too-long)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+IEX_Final_Project\Frontend\NeuralNetwork_MNIST.py:1:0: C0103: Module name "NeuralNetwork_MNIST" doesn't conform to snake_case naming style (invalid-name)
+************* Module Frontend.st_app
+IEX_Final_Project\Frontend\st_app.py:18:0: C0301: Line too long (200/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:21:0: C0301: Line too long (313/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:27:0: C0301: Line too long (167/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:33:0: C0301: Line too long (128/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:34:0: C0301: Line too long (144/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:35:0: C0301: Line too long (147/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:60:0: C0301: Line too long (262/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:63:0: C0301: Line too long (187/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:65:0: C0301: Line too long (111/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:69:0: C0301: Line too long (131/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:70:0: C0301: Line too long (153/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:71:0: C0301: Line too long (178/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:73:0: C0301: Line too long (136/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:74:0: C0301: Line too long (116/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:77:0: C0301: Line too long (157/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:78:0: C0301: Line too long (173/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:81:0: C0301: Line too long (151/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:138:0: C0301: Line too long (121/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:141:0: C0301: Line too long (330/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:151:0: C0301: Line too long (104/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:153:0: C0301: Line too long (170/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:167:0: C0301: Line too long (187/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:213:0: C0301: Line too long (140/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:216:0: C0301: Line too long (118/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:222:0: C0301: Line too long (122/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:249:0: C0301: Line too long (167/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:255:0: C0301: Line too long (103/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:256:0: C0301: Line too long (102/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:257:0: C0301: Line too long (123/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:260:0: C0301: Line too long (191/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:273:0: C0301: Line too long (171/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:274:0: C0301: Line too long (146/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:275:0: C0301: Line too long (136/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:276:0: C0301: Line too long (109/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:326:0: C0303: Trailing whitespace (trailing-whitespace)
+IEX_Final_Project\Frontend\st_app.py:342:0: C0301: Line too long (140/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:350:0: C0301: Line too long (109/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:358:0: C0301: Line too long (218/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:366:0: C0301: Line too long (202/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:374:0: C0301: Line too long (142/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:394:0: C0301: Line too long (173/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:429:0: C0301: Line too long (382/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:436:0: C0301: Line too long (122/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:437:0: C0301: Line too long (133/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:445:0: C0301: Line too long (115/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:453:0: C0301: Line too long (159/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:460:0: C0301: Line too long (116/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:467:0: C0301: Line too long (154/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:474:0: C0301: Line too long (194/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:481:0: C0301: Line too long (147/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:488:0: C0301: Line too long (163/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:525:0: C0301: Line too long (123/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:549:0: C0301: Line too long (115/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:557:0: C0301: Line too long (160/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:564:0: C0301: Line too long (150/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:580:0: C0301: Line too long (110/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:582:0: C0301: Line too long (121/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:589:0: C0301: Line too long (155/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:601:0: C0301: Line too long (146/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:608:0: C0301: Line too long (138/100) (line-too-long)
+IEX_Final_Project\Frontend\st_app.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+IEX_Final_Project\Frontend\st_app.py:7:0: E0401: Unable to import 'Housing_Brief' (import-error)
+IEX_Final_Project\Frontend\st_app.py:113:60: R1735: Consider using '{"opacity": 0.7}' instead of a call to 'dict'. (use-dict-literal)
+IEX_Final_Project\Frontend\st_app.py:129:28: R1735: Consider using '{"tickangle": 45}' instead of a call to 'dict'. (use-dict-literal)
+IEX_Final_Project\Frontend\st_app.py:4:0: C0411: standard import "pickle" should be placed before third party imports "requests", "streamlit", "pandas" (wrong-import-order)
+IEX_Final_Project\Frontend\st_app.py:4:0: W0611: Unused import pickle (unused-import)
+************* Module Frontend.titanic_app
+IEX_Final_Project\Frontend\titanic_app.py:47:0: C0301: Line too long (108/100) (line-too-long)
+IEX_Final_Project\Frontend\titanic_app.py:67:0: C0301: Line too long (119/100) (line-too-long)
+IEX_Final_Project\Frontend\titanic_app.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+IEX_Final_Project\Frontend\titanic_app.py:33:0: W0104: Statement seems to have no effect (pointless-statement)
+IEX_Final_Project\Frontend\titanic_app.py:36:0: W0104: Statement seems to have no effect (pointless-statement)
+IEX_Final_Project\Frontend\titanic_app.py:40:0: W0104: Statement seems to have no effect (pointless-statement)
+IEX_Final_Project\Frontend\titanic_app.py:109:0: W0104: Statement seems to have no effect (pointless-statement)
+IEX_Final_Project\Frontend\titanic_app.py:8:0: C0411: standard import "pickle" should be placed before third party imports "streamlit", "pandas", "sklearn.linear_model.LogisticRegression" (...) "sklearn.preprocessing.StandardScaler", "sklearn.svm.LinearSVC", "sklearn.metrics.accuracy_score" (wrong-import-order)
+IEX_Final_Project\Frontend\titanic_app.py:5:0: C0412: Imports from package sklearn are not grouped (ungrouped-imports)
+IEX_Final_Project\Frontend\titanic_app.py:3:0: W0611: Unused LogisticRegression imported from sklearn.linear_model (unused-import)
+IEX_Final_Project\Frontend\titanic_app.py:4:0: W0611: Unused numpy imported as np (unused-import)
+IEX_Final_Project\Frontend\titanic_app.py:1:0: R0801: Similar lines in 2 files
+==Frontend.NeuralNetwork_MNIST:[50:137]
+==Frontend.st_app:[441:527]
+    st.header("Pytorch")
+    st.write(
+        """
+    This project demonstrates a basic neural network for classifying handwritten digits from the MNIST dataset.
+    The process includes several key steps:
+    """
+    )
+
+    st.subheader("1. Loading the Data")
+    st.write(
+        """
+    The MNIST dataset is loaded using the torchvision library. It consists of 60,000 training images and 10,000 testing images of handwritten digits (0-9).
+    """
+    )
+
+    st.subheader("2. Data Transformation")
+    st.write(
+        """
+    The data is transformed into tensors and normalized. This prepares the data for training the neural network.
+    """
+    )
+
+    st.subheader("3. Creating Data Loaders")
+    st.write(
+        """
+    Data loaders are created to feed the data to the model in batches. This helps in efficient training and reduces overfitting by shuffling the data.
+    """
+    )
+
+    st.subheader("4. Initializing the Model")
+    st.write(
+        """
+    A neural network model is defined with two fully connected layers. The first layer has 512 neurons with ReLU activation, and the second layer has 10 neurons for each digit class (0-9).
+    """
+    )
+
+    st.subheader("5. Setting Loss Function and Optimizer")
+    st.write(
+        """
+    The cross-entropy loss function is used to measure the performance of the model. The Adam optimizer is used to update the model parameters.
+    """
+    )
+
+    st.subheader("6. Training the Model")
+    st.write(
+        """
+    The model is trained for 10 epochs. In each epoch, the model's parameters are updated to minimize the loss. The training loop involves the following steps:
+    - Zero the gradients
+    - Perform a forward pass to compute predictions
+    - Compute the loss
+    - Perform a backward pass to compute gradients
+    - Update the model parameters
+    """
+    )
+
+    st.header("Training Loop")
+    st.write(
+        """
+    Epoch 0: Loss: 0.1448
+
+    Epoch 1: Loss: 0.0311
+
+    Epoch 2: Loss: 0.0391
+
+    Epoch 3: Loss: 0.0193
+
+    Epoch 4: Loss: 0.0075
+
+    Epoch 5: Loss: 0.0761
+
+    Epoch 6: Loss: 0.0200
+
+    Epoch 7: Loss: 0.0181
+
+    Epoch 8: Loss: 0.0001
+
+    Epoch 9: Loss: 0.0005
+    """
+    )
+
+    st.subheader("7. Evaluating the Model")
+    st.write(
+        """
+    After training, the model is evaluated on the test set. The average loss and accuracy are calculated and displayed.
+    """
+    )
+    # Display the images (duplicate-code)
+IEX_Final_Project\Frontend\titanic_app.py:1:0: R0801: Similar lines in 2 files
+==Frontend.NeuralNetwork_MNIST:[199:219]
+==Frontend.st_app:[595:615]
+        )
+
+        st.subheader("5. Evaluating the Model")
+        st.write(
+            """
+        After training, the model is evaluated on the test data to measure its performance. The test loss and accuracy are computed and displayed.
+        """
+        )
+
+        st.subheader("6. Visualizing Training Progress")
+        st.write(
+            """
+        The training history, including the training loss and accuracy over epochs, is plotted to visualize the model's learning progress.
+        """
+        )
+        st.image(
+            "Pictures/TensorFlow2.png",
+            caption="Training Loss and Accuracy",
+            use_column_width=True,
+        ) (duplicate-code)
+IEX_Final_Project\Frontend\titanic_app.py:1:0: R0801: Similar lines in 2 files
+==Frontend.NeuralNetwork_MNIST:[139:152]
+==Frontend.st_app:[532:544]
+        )
+        st.image(
+            "Pictures/Ptorch_LC_Loss.png",
+            caption="Learning Curve - Loss",
+            use_column_width=True,
+        )
+        st.image(
+            "Pictures/Ptorch_LC_Accuracy.png",
+            caption="Learning Curve - Accuracy",
+            use_column_width=True,
+        )
+ (duplicate-code)
+IEX_Final_Project\Frontend\titanic_app.py:1:0: R0801: Similar lines in 2 files
+==Frontend.NeuralNetwork_MNIST:[153:175]
+==Frontend.st_app:[545:567]
+        st.header("Tensorflow")
+        st.write(
+            """
+        This project demonstrates a basic neural network for classifying handwritten digits from the MNIST dataset.
+        The process includes several key steps:
+        """
+        )
+
+        st.subheader("1. Loading and Preprocessing the Data")
+        st.write(
+            """
+        The MNIST dataset is loaded using the TensorFlow library. The images are normalized by dividing the pixel values by 255.0 to scale them between 0 and 1.
+        """
+        )
+
+        st.subheader("2. Displaying Sample Images")
+        st.write(
+            """
+        Five sample images from the MNIST dataset are displayed to show the type of data being used. Each image is shown with its corresponding label.
+        """
+        )
+        st.image( (duplicate-code)
+IEX_Final_Project\Frontend\titanic_app.py:1:0: R0801: Similar lines in 2 files
+==Frontend.NeuralNetwork_MNIST:[176:198]
+==Frontend.st_app:[570:592]
+        )
+
+        st.subheader("3. Defining and Compiling the Model")
+        st.write(
+            """
+        A neural network model is defined with the following layers:
+        - **Flatten Layer**: Converts each 28x28 image into a 1D array of 784 pixels.
+        - **Dense Layer**: A fully connected layer with 128 neurons and ReLU activation.
+        - **Dropout Layer**: A dropout layer with a 20% dropout rate to prevent overfitting.
+        - **Dense Layer**: The output layer with 10 neurons (one for each digit class) and softmax activation.
+
+        The model is compiled with the Adam optimizer, sparse categorical cross-entropy loss, and accuracy as the metric.
+        """
+        )
+
+        st.subheader("4. Training the Model")
+        st.write(
+            """
+        The model is trained for 6 epochs on the training data. The training process includes adjusting the model parameters to minimize the loss function.
+        """
+        )
+        st.image( (duplicate-code)
+IEX_Final_Project\Frontend\titanic_app.py:1:0: R0801: Similar lines in 2 files
+==Frontend.NeuralNetwork_MNIST:[28:49]
+==Frontend.st_app:[423:440]
+    st.divider()
+    st.subheader("History of the MNIST Dataset")
+    st.write(
+        """
+The MNIST (Modified National Institute of Standards and Technology) dataset is a large collection of handwritten digits that is commonly used for training various image processing systems. It was created by Yann LeCun, Corinna Cortes, and Christopher Burges. The dataset is a subset of a larger set available from NIST, and it was reprocessed to create the MNIST collection.
+
+Origin: The dataset was created by combining two of NIST's databases: Special Database 1 and Special Database 3.
+
+These databases contain binary images of handwritten digits.
+
+Release: The MNIST dataset was released in the 1990s and quickly became a benchmark for evaluating machine learning models and algorithms.
+"""
+    )
+    st.divider()
+    st.subheader("Conclusion")
+    st.write(
+        """This project provides a comprehensive overview of Neural Networks using both PyTorch and TensorFlow on the MNIST dataset.
+    It showcases the key steps involved in building, training, and evaluating neural networks with these two powerful frameworks,
+    offering a hands-on approach to understanding the fundamentals of deep learning."""
+    )
+ (duplicate-code)
+IEX_Final_Project\Frontend\titanic_app.py:1:0: R0801: Similar lines in 2 files
+==Database.db:[9:16]
+==Frontend.Housing_Brief:[42:49]
+columns = [
+    "Overall Qual",
+    "Overall Cond",
+    "Gr Liv Area",
+    "Central Air",
+    "Total Bsmt SF",
+    "SalePrice", (duplicate-code)
+IEX_Final_Project\Frontend\titanic_app.py:1:0: R0801: Similar lines in 2 files
+==Database.db:[10:15]
+==Frontend.Housing_Brief:[82:87]
+        "Overall Qual",
+        "Overall Cond",
+        "Gr Liv Area",
+        "Central Air",
+        "Total Bsmt SF", (duplicate-code)
+
+-----------------------------------
+Your code has been rated at 6.78/10

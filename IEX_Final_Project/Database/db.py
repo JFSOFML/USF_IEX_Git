@@ -1,5 +1,7 @@
-import pandas as pd
+"""These are the standard imports requried for this project"""
+
 import sqlite3
+import pandas as pd
 
 # Load Titanic_data to dataframe
 titanic_df = pd.read_csv("Data_files/titanic_Data.csv")
